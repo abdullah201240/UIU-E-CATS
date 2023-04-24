@@ -1,3 +1,225 @@
+{{-- <!DOCTYPE html>
+
+<html>
+
+<head>
+
+
+    <title>Admin Hostel Request</title>
+<style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+    *{
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: 'Roboto', sans-serif;
+
+    box-sizing: border-box;
+
+}
+
+body{
+
+    height: 100vh;
+
+    display: grid;
+
+    place-items: center;
+
+    background: white;
+
+    background-size: 100% 100%;
+
+    background-repeat: no-repeat;
+
+
+}
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap');
+
+
+.table_responsive{
+max-width: 100%;
+border: 1px solid #00bcd4;
+background-color: hsl(0deg 0% 99.21%);
+padding: 15px;
+overflow: auto;
+margin: auto;
+border-radius: 4px;
+}
+.table{
+    width: 100%;
+    height: 60px;
+    font-size: 13px;
+    color: #444;
+    white-space: nowrap;
+    border-collapse: collapse;
+}
+.table>.head{
+    background-color: #00bcd4;
+    color: #fff;
+}
+.table>.head th{
+    padding: 15px;
+}
+
+.table th,
+.table td{
+    border: 1px solid #00000017;
+    padding: 10px 15px;
+}
+.action-btn{
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+}
+.action-btn1{
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+}
+.action-btn2{
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+}
+.action-btn>a{
+    text-decoration: none;
+    color: #fff;
+    background: #d63384;
+    border: 1px solid #d63384;
+    display:inline-block;
+    padding: 7px 20px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.3s ease-in-out ;
+
+
+}
+.action-btn1>a{
+    text-decoration: none;
+    color: #fff;
+    background: #4CAF50;
+    border: 1px solid #4CAF50;
+    display:inline-block;
+    padding: 7px 20px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.3s ease-in-out ;
+
+
+}
+.action-btn2>a{
+    text-decoration: none;
+    color: #fff;
+    background: #F44335;
+    border: 1px solid #F44335;
+    display:inline-block;
+    padding: 7px 20px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.3s ease-in-out ;
+
+
+}
+
+.action-btn>a:hover{
+    box-shadow: 0 3px 8px #0003;
+
+}
+
+.action-btn1>a:hover{
+    box-shadow: 0 3px 8px #0003;
+
+}
+
+.action-btn2>a:hover{
+    box-shadow: 0 3px 8px #0003;
+
+}
+body>.tbody>tr{
+    background-color: #fff;
+    transition: 0.3s ease-in-out;
+}
+body>.tbody>tr:nth-child(even){
+    background-color: rgb(238,238,238);
+}
+body>.tbody>tr:hover{
+    filter: drop-shadow(0px 2px 6px #0002);
+}
+</style>
+
+
+
+
+
+</head>
+
+<body>
+
+
+<!--2nd table-->
+<div class="element2">
+
+<div class="table_responsive">
+
+<table class="table">
+
+           <div style="text-align: center;"><h1>Hostel Booking Request</h1></div><br>
+
+    <thead class="head">
+
+       <tr>
+          <th>Date</th>
+          <th>Day</th>
+          <th>Student Name</th>
+          <th>Student Id</th>
+          <th>Status</th>
+          <th>Accept</th>
+          <th>Cancel</th>
+       </tr>
+    </thead>
+
+
+    <tbody class="tbody">
+        <tr>
+            <td>2022-12-31</td>
+            <td>Saturday</td>
+            <td>Abdullah Al Sakib</td>
+            <td>011201240</td>
+
+            <td>pending</td>
+
+            <td>
+                <span class="action-btn1">
+                    <a href="#">Accepted</a>
+                </span>
+            </td>
+            <td>
+
+                <span class="action-btn2">
+                    <a href="#">Cancelled</a>
+                </span>
+            </td>
+
+        </tr>
+
+
+    </tbody>
+</table>
+</div>
+
+</div>
+
+</body>
+
+
+</html> --}}
+
+
 
 
 <!DOCTYPE html>
@@ -55,11 +277,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="adminhome" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="adminhome" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
                     <a href="addstudent" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Students</a>
                     <a href="addteacher" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Teacher</a>
-                    <a href="admin_hostel_bokking_table" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Hostel</a>
+                    <a href="admin_hostel_bokking_table" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Hostel</a>
 
 
 
@@ -156,29 +378,36 @@
                             <thead>
                                 <tr class="text-white">
 
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Number</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Gender</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Day</th>
-                                    <th scope="col">Faculty Name</th>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">Student Id</th>
-                                    <th scope="col">Start Time</th>
-                                    <th scope="col">End Time</th>
+                                    <th scope="col">Seat Number</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
 
                             <tbody>
+                                @foreach ($data as  $da)
+
+
                                 <tr>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$da->sname}}</td>
+                                    <td>{{$da->sid}}</td>
+                                    <td>{{$da->phone}}</td>
+                                    <td>{{$da->email}}</td>
+                                    <td>{{$da->gender}}</td>
+                                    <td>{{$da->date}}</td>
+                                    <td>{{$da->seatNum}}</td>
+                                    <td>{{$da->status}}</td>
+                                    <td><button type="button" class="btn btn-success">Accept</button></td>
+                                    <td><button type="button" class="btn btn-danger">Cancel</button></td>
 
                                 </tr>
-
+                                @endforeach
 
 
 

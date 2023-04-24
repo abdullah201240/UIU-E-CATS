@@ -133,7 +133,7 @@ Route::get('projectshowedit/{id}', [student_course_enroll::class, 'projectshowed
 
 Route::post('show_teacher_profile/{id}', [student_course_enroll::class, 'freetime']);
 Route::get('teacherprofile', [student_course_enroll::class, 'teacherprofile']);
-Route::post('teacherprofile', [student_course_enroll::class, 'teacherprofilefrom']);
+Route::post('timeadd', [student_course_enroll::class, 'teacherprofilefrom']);
 
 Route::post('teacherprofile', [student_course_enroll::class, 'timage']);
 
@@ -160,3 +160,26 @@ Route::get('/addpatners/{id}/{pid}', [student_course_enroll::class, 'addpatners'
 Route::post('hostel_registration_form', [secend::class, 'hostel_registration_form']);
 Route::view('hostel_registration_form', 'hostel_registration_form');
 Route::view("student_login", "student_login");
+
+
+Route::view("paymenttest", "paymenttest");
+
+Route::view("exampleEasycheckout", "exampleEasycheckout");
+
+
+Route::get('/admin_hostel_bokking_table', [secend::class, 'admin_hostel_bokking_table']);
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

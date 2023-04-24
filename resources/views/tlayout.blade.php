@@ -41,7 +41,7 @@
          <span class="tooltip">Home</span>
       </li>
       <li>
-        <a href="/studentprofile">
+        <a href="/teacherprofile">
             <i class='bx bx-user' ></i>
           <span class="links_name">Profile</span>
         </a>
@@ -59,21 +59,21 @@
      </li>
 
      <li>
-       <a href="teacher_ua_list">
+       <a href="/teacher_ua_list">
          <i class='bx bx-chat' ></i>
          <span class="links_name"> U.A List</span>
        </a>
        <span class="tooltip"> U.A List</span>
      </li>
      <li>
-        <a href="teacher_grader_list">
+        <a href="/teacher_grader_list">
           <i class='bx bx-chat' ></i>
           <span class="links_name"> Grader List</span>
         </a>
         <span class="tooltip"> Grader List</span>
       </li>
       <li>
-        <a href="teacher_request">
+        <a href="/teacher_request">
           <i class='bx bx-chat' ></i>
           <span class="links_name">Request</span>
         </a>
