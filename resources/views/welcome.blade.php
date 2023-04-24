@@ -680,7 +680,7 @@ you can use the generic selector below, but it's slower:
                         <a class="nav-link" href="tlogin">Faculty Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login">Student Login</a>
+                        <a class="nav-link" href="student_login">Student Login</a>
                     </li>
 
                 </ul>
