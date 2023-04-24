@@ -23,9 +23,9 @@ Route::get('/', function () {
 
 Route::get('home', [student_course_enroll::class, 'index']);
 
-Route::get('addcourses',[student_course_enroll::class, 'addcourse']);
-Route::get('studentdeletecourse/{id}',[student_course_enroll::class, 'destroy']);
-Route::get('counsilling',[student_course_enroll::class, 'studentinfo']);
+Route::get('addcourses', [student_course_enroll::class, 'addcourse']);
+Route::get('studentdeletecourse/{id}', [student_course_enroll::class, 'destroy']);
+Route::get('counsilling', [student_course_enroll::class, 'studentinfo']);
 
 Route::get("slogin", [student_course_enroll::class, 'login']);
 Route::view("login", "slogin");
@@ -36,7 +36,7 @@ Route::get("searchcourses", [student_course_enroll::class, 'searchcourses']);
 
 Route::get("addcoursesapi/{id}", [student_course_enroll::class, 'addcourses']);
 Route::get('slogout', [student_course_enroll::class, 'slogout']);
-Route::get('deletecounsling/{id}',[student_course_enroll::class, 'destroys']);
+Route::get('deletecounsling/{id}', [student_course_enroll::class, 'destroys']);
 
 Route::get('studentaddcounsilling', [student_course_enroll::class, 'showallteacher']);
 
@@ -156,3 +156,7 @@ Route::get('deleteua/{id}', [secend::class, 'deleteua']);
 Route::get('deletegrader/{id}', [secend::class, 'deletegrader']);
 
 Route::get('/addpatners/{id}/{pid}', [student_course_enroll::class, 'addpatners']);
+
+Route::post('hostel_registration_form', [secend::class, 'hostel_registration_form']);
+Route::view('hostel_registration_form', 'hostel_registration_form');
+Route::view("student_login", "student_login");
