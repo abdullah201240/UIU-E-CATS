@@ -1196,9 +1196,9 @@ United International University<br>
 
         $data3 = DB::select("SELECT * FROM `bokking` WHERE tid='$tid'");
 
+        return redirect("teacherprofile");
 
-
-        return view('teacherprofile')->with(['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
+        //return view('teacherprofile')->with(['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3]);
     }
     public function timage(Request $request)
     {

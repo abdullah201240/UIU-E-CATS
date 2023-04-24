@@ -53,7 +53,7 @@
              <p class="mb-0"><strong class="pr-1">Room No:</strong>{{$da->room}}</p>
              <br>
              <center>
-            <form action="" method="post">
+            <form action="timeadd" method="post">
                 @csrf
             <label for="birthday"><p class="mb-0"><strong class="pr-1">Add Counselling:</strong></p></label><br>
             <label for="birthday"><p class="mb-0"><strong class="pr-1">Start Time:</strong></p></label><br>
@@ -223,6 +223,9 @@
     		</div>
 		</div>
     </div>
+    <br>
+    <br>
+    <br>
 </section>
 
 
