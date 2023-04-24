@@ -156,3 +156,6 @@ Route::get('deleteua/{id}', [secend::class, 'deleteua']);
 Route::get('deletegrader/{id}', [secend::class, 'deletegrader']);
 
 Route::get('/addpatners/{id}/{pid}', [student_course_enroll::class, 'addpatners']);
+
+Route::post('hostel_registration_form', [secend::class, 'hostel_registration_form']);
+Route::view('hostel_registration_form', 'hostel_registration_form');

@@ -65,7 +65,7 @@
      </li>
 
      <li>
-       <a href="uahome">
+       <a href="/uahome">
 
 
          <span class="links_name">Apply For U.A</span>
@@ -74,7 +74,7 @@
      </li>
      <li>
         <li>
-            <a href="graderhome">
+            <a href="/graderhome">
 
 
               <span class="links_name">Apply For Grader</span>
@@ -82,13 +82,21 @@
             <span class="tooltip">Apply For Grader</span>
           </li>
           <li>
-       <a href="allbook">
+       <a href="/allbook">
         <i class='bx  bx-book-reader' ></i>
          <span class="links_name">Ebook</span>
        </a>
        <span class="tooltip">Ebook</span>
      </li>
      <li>
+        <a href="/hostel_registration_form">
+            <i class='bx  bx-book-reader' ></i>
+
+            <span class="links_name">Apply For Hostel</span>
+          </a>
+          <span class="tooltip">Apply For Hostel</span>
+        </li>
+        <li>
 
      <a href="/projectshowhome">
         <i class='bx  bx-book-reader' ></i>
@@ -100,10 +108,11 @@
 
 
 
+
      <li class="profile">
 
 
-        <a href="slogout"><i class='bx bx-log-out' id="log_out" ></i></a>
+        <a href="/slogout"><i class='bx bx-log-out' id="log_out" ></i></a>
      </li>
     </ul>
   </div>

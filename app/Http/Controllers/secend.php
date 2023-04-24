@@ -27,4 +27,11 @@ class secend extends Controller
 
         return redirect("graderhome");
     }
+    public function hostel_registration_form(Request $req){
+        $data = array('sid' => $req->id, "email" => $req->email, "sname" => $req->name, "phone" => $req->phoneNumber, "gender" => $req->gender, "status" => "Panding");
+        DB::table('hostel')->insert($data);
+
+return redirect("hostel_registration_form");
+
+    }
 }
