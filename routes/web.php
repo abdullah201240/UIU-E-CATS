@@ -184,6 +184,18 @@ Route::view("alumnilogin", "alumnilogin");
 Route::view("addalumni", "addalumni");
 Route::post('addalumni', [secend::class, 'addalumni']);
 
+Route::view("admin_faculty_login", "admin_faculty_login");
+
+Route::get('uapyrej/{id}', [secend::class, 'uapyrej']);
+
+
+Route::get('uapyasp/{id}', [secend::class, 'uapyasp']);
+
+Route::get('admingrader', [secend::class, 'admingrader']);
+
+Route::get('ready/{id}', [secend::class, 'ready']);
+
+Route::get('unlucky/{id}', [secend::class, 'unlucky']);
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

@@ -674,7 +674,7 @@ class student_course_enroll extends Controller
         }
         if ($users == false) {
 
-            return redirect("tlogin");
+            return redirect("admin_faculty_login");
         }
     }
     public function thome()
