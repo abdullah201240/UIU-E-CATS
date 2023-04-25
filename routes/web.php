@@ -184,6 +184,8 @@ Route::view("alumnilogin", "alumnilogin");
 Route::view("addalumni", "addalumni");
 Route::post('addalumni', [secend::class, 'addalumni']);
 
+Route::view("admin_faculty_login", "admin_faculty_login");
+
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
