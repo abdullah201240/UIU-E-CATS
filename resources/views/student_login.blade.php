@@ -15,7 +15,8 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form>
+            <form action="" method="POST" enctype="multipart/form-data">
+                @csrf
                 <h1>Hostel Sign In</h1>
 
                 <span>Use your registered account only</span>

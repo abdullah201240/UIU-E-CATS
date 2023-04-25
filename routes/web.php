@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\student_course_enroll;
 use App\Http\Controllers\secend;
+use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -169,6 +170,13 @@ Route::view("exampleEasycheckout", "exampleEasycheckout");
 
 Route::get('/admin_hostel_bokking_table', [secend::class, 'admin_hostel_bokking_table']);
 
+Route::get('/hostledle/{id}', [secend::class, 'hostledle']);
+
+Route::get('/hostleasp/{id}', [secend::class, 'hostleasp']);
+
+Route::post('student_login', [secend::class, 'student_login']);
+
+Route::get('hostel_home', [secend::class, 'hostel_home']);
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
@@ -177,7 +185,7 @@ Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheck
 Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
 Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('success', [SslCommerzPaymentController::class, 'success']);
 Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
