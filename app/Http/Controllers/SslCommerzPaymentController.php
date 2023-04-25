@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use Datetime;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -66,6 +67,9 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_b'] = "ref002";
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
+        $currentdate = new DateTime();
+        $data = array('sid' => $request->sid,'date'=>$currentdate,  'amount' => $request->total_amount,"sname" => $request->sname);
+        DB::table('hostel_pay')->insert($data);
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
         $update_product = DB::table('orders')
