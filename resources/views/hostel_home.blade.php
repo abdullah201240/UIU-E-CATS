@@ -881,7 +881,7 @@
                                     <div id="ctl00_MainContainer_pnlMessage" class="panel panel-default pp"
                                         style="padding: 15px 15px 10px 15px">
 
-                                        <span id="ctl00_MainContainer_Label1">Message : </span>
+                                       <a href="/student_login"> <button type="button" class="btn btn-info">Log Out</button></a>
                                         <span id="ctl00_MainContainer_lblMsg"
                                             style="text-align: center; font-size: 18px; color: #ff0000; font-weight: bold;"></span>
 
@@ -997,6 +997,7 @@
                                   <form action="{{ url('/pay') }}" method="POST" class="needs-validation">
                                     <input type="hidden" value="{{ csrf_token() }}" name="_token" />
                                     <input type="hidden" value="{{ $da1->sname }}" name="sname" />
+                                    <input type="hidden" value="{{ $da1->sid }}" name="sid" />
                                     <input id='total_amount' name="total_amount" type="text" value="21250"
                                         id="ctl00_MainContainer_txt_online_amount" class="ssl_amount"
                                         style="height: 30px;background-color: #e9ecef;
@@ -1053,7 +1054,12 @@
                                 <span id="ctl00_MainContainer_lblTxtTotalFee">Total Fee </span>
                             </div>
                             <div class="col-md-8 mb-2">
-                                <input name="ctl00$MainContainer$txtTotalFee" type="text" value="654500.00"
+                                <input name="ctl00$MainContainer$txtTotalFee" type="text" value="<?php
+                                $year=($diff->y*12)*3500;
+                                $month=($diff->m*3500);
+                                $total=$year+$month;
+                                echo$total;
+                                ?>"
                                     id="ctl00_MainContainer_txtTotalFee" disabled="disabled" class="form-control">
                             </div>
                         </div>
@@ -1064,7 +1070,7 @@
                                 <span id="ctl00_MainContainer_lblTxtTotalDiscount">Total Discount </span>
                             </div>
                             <div class="col-md-8 mb-2">
-                                <input name="ctl00$MainContainer$txtTotalDiscount" type="text" value=""
+                                <input name="ctl00$MainContainer$txtTotalDiscount" type="text" value="0"
                                     id="ctl00_MainContainer_txtTotalDiscount" disabled="disabled"
                                     class="form-control">
                             </div>
@@ -1079,7 +1085,7 @@
                                 <span id="ctl00_MainContainer_lblPaidAmont">Paid Amount </span>
                             </div>
                             <div class="col-md-8 mb-2">
-                                <input name="ctl00$MainContainer$txtPaidAmount" type="text" value=""
+                                <input name="ctl00$MainContainer$txtPaidAmount" type="text" value="{{$t}}"
                                     id="ctl00_MainContainer_txtPaidAmount" disabled="disabled" class="form-control">
                             </div>
                         </div>
@@ -1088,7 +1094,12 @@
                                 <span id="ctl00_MainContainer_lblTxtBalance">Balance </span>
                             </div>
                             <div class="col-md-8 mb-2">
-                                <input name="ctl00$MainContainer$txtBalance" type="text" value=""
+                                <input name="ctl00$MainContainer$txtBalance" type="text" value="<?php
+                                echo$total-$t;
+
+                                ?>
+
+                                "
                                     id="ctl00_MainContainer_txtBalance" disabled="disabled" class="form-control">
                                 <br>
                                 <span id="ctl00_MainContainer_lblNote" style="color:Blue;"> Negative(-) balance means
@@ -1105,27 +1116,25 @@
                             id="ctl00_MainContainer_gvStudentBillView" style="width:100%;border-collapse:collapse;">
                             <tbody>
                                 <tr style="color:White;background-color:#2196F3;height:40px;">
-                                    <th class="center" scope="col" style="width:300px;">Sl. No</th>
-                                    <th class="center" scope="col" style="width:800px;">
-                                        <a id="ctl00_MainContainer_gvStudentBillView_ctl01_lnkTypeName"
-                                            href="javascript:__doPostBack('ctl00$MainContainer$gvStudentBillView$ctl01$lnkTypeName','')"
-                                            style="color:White;">Fee Type</a>
-                                    </th>
+
+                                    <th class="center" scope="col" style="width:500px;">Student Name</th>
+                                    <th class="center" scope="col" style="width:500px;">ID</th>
                                     <th class="center" scope="col" style="width:500px;">Amount</th>
-                                    <th class="center" scope="col" style="width:500px;">Payment</th>
-                                    <th class="center" scope="col" style="width:500px;">Month</th>
                                     <th class="center" scope="col" style="width:500px;">Date</th>
-                                    <th class="center" scope="col" style="width:500px;"></th>
+
                                 </tr>
+                                @foreach ($data2 as $da2 )
+
+
                                 <tr>
-                                    <td align="center"><b>1</b></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+
+                                    <td>{{ $da2->sname}}</td>
+                                    <td>{{ $da2->sid}}</td>
+                                    <td>{{ $da2->amount}}</td>
+                                    <td>{{ $da2->date}}</td>
+
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
