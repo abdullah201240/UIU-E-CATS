@@ -403,8 +403,8 @@ body>.tbody>tr:hover{
                                     <td>{{$da->date}}</td>
                                     <td>{{$da->seatNum}}</td>
                                     <td>{{$da->status}}</td>
-                                    <td><button type="button" class="btn btn-success">Accept</button></td>
-                                    <td><button type="button" class="btn btn-danger">Cancel</button></td>
+                                    <td><a href='hostleasp/{{$da->id}}'><button type="button" class="btn btn-success">Accept</button></a></td>
+                                    <td><a href='hostledle/{{$da->id}}'><button type="button" class="btn btn-danger">Cancel</button></a></td>
 
                                 </tr>
                                 @endforeach
@@ -460,16 +460,10 @@ body>.tbody>tr:hover{
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+
     <style>
         /********** Template CSS **********/
 :root {
@@ -489,18 +483,7 @@ body>.tbody>tr:hover{
 
 
 /*** Spinner ***/
-#spinner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s ease-out, visibility 0s linear .5s;
-    z-index: 99999;
-}
 
-#spinner.show {
-    transition: opacity .5s ease-out, visibility 0s linear 0s;
-    visibility: visible;
-    opacity: 1;
-}
 
 
 /*** Button ***/

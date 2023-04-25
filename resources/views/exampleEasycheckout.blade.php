@@ -73,7 +73,7 @@
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
-            <form method="POST" class="needs-validation" novalidate>
+            <form method="POST" class="needs-validation" >
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
@@ -154,7 +154,7 @@
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="same-address">
-                    <input type="hidden" value="1200" name="amount" id="total_amount" required/>
+                    <input type="number" value="1200" name="amount" id="total_amount" required/>
                     <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
                         address</label>
                 </div>
