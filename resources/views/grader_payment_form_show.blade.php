@@ -6,7 +6,7 @@
 
      <head>
          <meta charset="UTF-8">
-
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -147,12 +147,19 @@
 
 
                  </table>
+
              </div>
+             <br><br><br>
+             <br><br><br>
+             <br><br><br>
+             <br><br><br>
 
          </div>
          <br>
          <br>
 
+         <br><br><br>
+         <br><br><br>
          <br><br><br>
          <br><br><br>
 
@@ -198,7 +205,7 @@
 
                                         "</td><td>" + obj.data5[i]['status'] +
 
-                                    "</td><td><button id='refresh' class='delete' onclick='deleteuser(" +
+                                    "</td><td><button id='refresh' class='btn btn-danger' onclick='deleteuser(" +
                                      obj.data5[i]['id'] + ")' >Delete</button></td></tr> </tbody>"
 
                              }
@@ -214,7 +221,7 @@
                                      "</td><td>" + obj.data5[i]['as3'] +
                                      "</td><td>" + obj.data5[i]['as4'] +
                                      "</td><td>" + obj.data5[i]['status'] +
-                                     "</td><td><button id='refresh' class='delete' onclick='deleteuser(" +
+                                     "</td><td><button id='refresh' class='btn btn-danger' onclick='deleteuser(" +
                                      obj.data5[i]['id'] + ")' >Delete</button></td></tr> </tbody>"
 
                              }
@@ -256,7 +263,7 @@
                          .data5[i]['as1'] + "</td><td>" + obj.data5[i]['as2'] + "</td><td>" + obj.data5[i]['as3'] +
                          "</td><td>" + obj.data5[i]['as4'] +
                             "</td><td>" + obj.data5[i]['status'] +
-                         "</td><td><button id='refresh' class='delete' onclick='deleteuser(" +
+                         "</td><td><button id='refresh' class='btn btn-danger' onclick='deleteuser(" +
                          obj.data5[i]['id'] + ")' >Delete</button></td></tr> </tbody>"
 
                  }
@@ -328,7 +335,7 @@
                              obj
                              .data5[i]['as1'] + "</td><td>" + obj.data5[i]['as2'] + "</td><td>" + obj.data5[i]['as3'] +
                              "</td><td>" + obj.data5[i]['as4'] +
-                             "</td><td><button id='refresh' class='delete' onclick='deleteuser(" +
+                             "</td><td><button id='refresh' class='btn btn-danger' onclick='deleteuser(" +
                              obj.data5[i]['id'] + ")' >Delete</button></td></tr> </tbody>"
 
                      }

@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="adminhome" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="adminhome" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
                     <a href="addstudent" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Students</a>
                     <a href="addteacher" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Teacher</a>
@@ -63,7 +63,7 @@
 
                     <a href="addalumni" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Alumni</a>
 
-                    <a href="admingrader" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Grader</a>
+                    <a href="admingrader" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Grader</a>
 
 
                 </div>
@@ -151,7 +151,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Booking</h6>
+                        <h6 class="mb-0">Payment Request</h6>
 
                     </div>
                     <div class="table-responsive">
@@ -159,30 +159,42 @@
                             <thead>
                                 <tr class="text-white">
 
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Day</th>
-                                    <th scope="col">Faculty Name</th>
                                     <th scope="col">Student Name</th>
-                                    <th scope="col">Student Id</th>
-                                    <th scope="col">Start Time</th>
-                                    <th scope="col">End Time</th>
+                                    <th scope="col">Student ID</th>
+                                    <th scope="col">Faculty ID</th>
+                                    <th scope="col">Course ID</th>
+                                    <th scope="col">Section</th>
+                                    <th scope="col">Assessment 1</th>
+                                    <th scope="col">Assessment 2</th>
+                                    <th scope="col">Assessment 3</th>
+                                    <th scope="col">Assessment 4</th>
+                                    <th scope="col">Status</th>
+
                                 </tr>
                             </thead>
 
                             <tbody>
+                                @foreach ($data as $da)
+
+
                                 <tr>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $da->sname}}</td>
+                                    <td>{{ $da->sid}}</td>
+                                    <td>{{ $da->tid}}</td>
+                                    <td>{{ $da->cid}}</td>
+                                    <td>{{ $da->section}}</td>
+                                    <td>{{ $da->as1}}</td>
+                                    <td>{{ $da->as2}}</td>
+                                    <td>{{ $da->as3}}</td>
+                                    <td>{{ $da->as4}}</td>
+                                    <td>{{ $da->status}}</td>
+                                    <td><a href="ready/{{$da->id}}"><button type="button" class="btn btn-success">Ready For Payment</button></a></td>
+                           <td><a href="unlucky/{{$da->id}}"><button type="button" class="btn btn-danger">Reject By Admin</button></a></td>
 
                                 </tr>
 
-
+                                @endforeach
 
 
                             </tbody>
