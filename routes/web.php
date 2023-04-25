@@ -179,6 +179,11 @@ Route::get('/hostleasp/{id}', [secend::class, 'hostleasp']);
 Route::post('student_login', [secend::class, 'student_login']);
 
 Route::get('hostel_home', [secend::class, 'hostel_home']);
+Route::view("alumnilogin", "alumnilogin");
+
+Route::view("addalumni", "addalumni");
+Route::post('addalumni', [secend::class, 'addalumni']);
+
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

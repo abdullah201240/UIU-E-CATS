@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Students</title>
+    <title>Alumni</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -56,13 +56,12 @@
                 <div class="navbar-nav w-100">
                     <a href="adminhome" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
-                    <a href="addstudent" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Students</a>
+                    <a href="addstudent" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Students</a>
                     <a href="addteacher" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Teacher</a>
+
                     <a href="admin_hostel_bokking_table" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Hostel</a>
 
-                    <a href="addalumni" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Alumni</a>
-
-
+                    <a href="addalumni" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Alumni</a>
                 </div>
             </nav>
         </div>
@@ -111,7 +110,7 @@
                     <div class="col-sm-12 col-md-6 col-xl-6">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                <h6 class="mb-0">Students</h6>
+                                <h6 class="mb-0">Alumni</h6>
 
                             </div>
 

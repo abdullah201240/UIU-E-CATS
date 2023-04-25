@@ -134,4 +134,13 @@ class secend extends Controller
 
         return view('hostel_home')->with(['data1' => $data1, 'diff' => $age ,'t'=>$t,'data2'=>$data2]);
     }
+    public function addalumni(Request $req){
+        $pass=md5("1234");
+        $data = array('id' => $req->id, 'name'=>$req->name, 'password' => $pass, 'bdate' => $req->birthdaytime, "department" => $req->department, "email" => $req->email, "phone" => $req->number, "gender" => $req->gender);
+        DB::table('alumni')->insert($data);
+
+        return redirect("addalumni");
+
+
+    }
 }
