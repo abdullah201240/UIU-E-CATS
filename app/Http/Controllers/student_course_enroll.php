@@ -145,15 +145,6 @@ class student_course_enroll extends Controller
 
          $data6=[];
 
-
-            // $birthday = $_GET['birthday'];
-            // $newDate = date('l', strtotime($birthday));
-            // $data6 = DB::select("SELECT * FROM `time_schedule` WHERE tid='$id' and day='$newDate' and  NOT EXISTS(SELECT * from bokking WHERE bokking.date='$birthday' and time_schedule.id=bokking.bid)");
-
-
-
-
-
         return view('show_teacher_profile')->with(['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'data6' => $data6]);
     }
 
@@ -243,7 +234,7 @@ class student_course_enroll extends Controller
     public function  showallbook()
     {
 
-        //$data = DB::select(" SELECT * FROM `book` ORDER BY(coursename)");
+
         $data = DB::select(" SELECT DISTINCT(cid),cname FROM `course` ");
 
 

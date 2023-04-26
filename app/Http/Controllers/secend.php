@@ -142,6 +142,7 @@ class secend extends Controller
 
         return redirect("addalumni");
     }
+
     public function uapyrej($id)
     {
 
@@ -149,28 +150,96 @@ class secend extends Controller
 
         return redirect("teacher_request");
     }
-    public function uapyasp($id){
+    public function uapyasp($id)
+    {
         DB::update("UPDATE `graderpyment` SET `status`='Accpect' WHERE id=?", [$id]);
 
         return redirect("teacher_request");
-
     }
-    public function admingrader(){
+    public function admingrader()
+    {
 
         $data = DB::select("SELECT * FROM `graderpyment`");
 
         return view('admingrader')->with(['data' => $data]);
     }
-    public function ready($id){
+    public function ready($id)
+    {
         DB::update("UPDATE `graderpyment` SET `status`='Ready for Payment' WHERE id=?", [$id]);
 
         return redirect("admingrader");
-
     }
-    public function unlucky($id){
+    public function unlucky($id)
+    {
         DB::update("UPDATE `graderpyment` SET `status`='Cancel from admin' WHERE id=?", [$id]);
 
         return redirect("admingrader");
+    }
+    public function alumnilogin(Request $req)
+    {
+        $pass = md5($req->password);
+        $data1 = DB::select("SELECT * FROM `alumni` WHERE id='$req->id' and password='$pass'");
+        foreach ($data1 as $row) {
+
+            Session::put('$aid', $row->id);
+            Session::put('$aname', $row->name);
+            Session::put('$aimage', $row->image);
+            return redirect("newsfeed");
+        }
+        if ($data1 == false) {
+
+            return redirect("alumnilogin");
+        }
+    }
+    public function newsfeed()
+    {
+        $aid = Session::get('$aid');
+        $data = DB::select("SELECT * FROM `alumni` WHERE id='$aid' ");
+        $data1 = DB::select("SELECT * FROM `newspost` ORDER BY(id) DESC ");
+
+        return view('newsfeed')->with(['data' => $data,'data1'=>$data1]);
+    }
+    public function newspost(Request $req)
+    {
+        $aid = Session::get('$aid');
+        $aname = Session::get('$aname');
+        $aimage=Session::get('$aimage');
+        $file = $req->file;
+        $time=date("Y-m-d h:m:s");
+
+        $img_name = $_FILES['file']['name'];
+        $img_size = $_FILES['file']['size'];
+        $tmp_name = $_FILES['file']['tmp_name'];
+        $error = $_FILES['file']['error'];
+
+        if ($error === 0) {
+
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
+
+            $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
+
+            if (in_array($img_ex_lc, $allowed_exs)) {
+                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                $img_upload_path = 'images/' . $new_img_name;
+                move_uploaded_file($tmp_name, $img_upload_path);
+
+                // Insert into Database
+                $data = array('aid' => $aid, 'userimage'=>$aimage,'time'=>$time,'aname' => $aname, 'image' => $new_img_name, 'text' => $req->postText);
+                DB::table('newspost')->insert($data);
+
+                return redirect("newsfeed");
+            }
+        }
+    }
+    public function comment(Request $req){
+        $data = array('aid' => $req->aid, 'userimage'=>$req->userimage,'cid'=>$req->cid,'aname' => $req->aname,  'comment' => $req->comments);
+                DB::table('postcomment')->insert($data);
+                return redirect("newsfeed");
+    }
+    public function showcomment($id){
+        $data = DB::select("SELECT * FROM `postcomment` WHERE cid='$id' ");
+        return response()->json(['data' => $data]);
 
     }
 }
