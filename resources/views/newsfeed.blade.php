@@ -33,7 +33,7 @@
             <ul>
                 <li><a href="/newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
                 <li><a href="#"><img src="images/network.png"> <span>My Network</span></a></li>
-                <li><a href="#"><img src="images/jobs.png"> <span>Jobs</span></a></li>
+
                 <li><a href="#"><img src="images/message.png"> <span>Messaging</span></a></li>
 
             </ul>
@@ -56,7 +56,7 @@
                         <img src="images/{{ $da->image }}">
                         <div>
                             <h3>{{ $da->name }}</h3>
-                            <a href="#">See Your Profile</a>
+                            <a href="/alumniprofile">See Your Profile</a>
                         </div>
                     </div>
                     <hr>

@@ -242,4 +242,58 @@ class secend extends Controller
         return response()->json(['data' => $data]);
 
     }
+public function alumniprofile(){
+    $aid = Session::get('$aid');
+
+    $data = DB::select(" SELECT * FROM `alumni` WHERE id='$aid' ");
+    $data1 = DB::select(" SELECT * FROM `alumnieducation` WHERE aid='$aid' ");
+    $data2 = DB::select(" SELECT * FROM `alumniskill` WHERE aid='$aid' ");
+    $data3 = DB::select(" SELECT * FROM `alumnilanguage` WHERE aid='$aid' ");
+    $data4 = DB::select(" SELECT * FROM `newspost` WHERE aid='$aid' ");
+
+    return view('alumniprofile')->with(['data' => $data,'data1'=>$data1,'data2'=>$data2,'data3'=>$data3,'data4'=>$data4]);
+
 }
+public function alumnieducation(Request $req){
+    $aid = Session::get('$aid');
+    $aname = Session::get('$aname');
+    $data = array('aid' => $aid, 'aname' => $aname,'name'=>$req->name,'degree'=>$req->degree,  'year' => $req->year);
+    DB::table('alumnieducation')->insert($data);
+    return redirect("alumniprofile");
+}
+public function alumni_delete_education($id){
+    DB::delete('DELETE FROM `alumnieducation` WHERE id= ?', [$id]);
+
+
+    return redirect("alumniprofile");
+}
+public function alumniaddexprience(Request $req){
+
+ $aid = Session::get('$aid');
+    $aname = Session::get('$aname');
+    $data = array('aid' => $aid, 'aname' => $aname,'description'=>$req->description,'employment_type'=>$req->employment_type,  'job_title' => $req->job_title,'company_name'=>$req->company_name);
+    DB::table('alumniexprience')->insert($data);
+    return redirect("alumniprofile");
+
+}
+public function alumniaddskill(Request $req){
+    $aid = Session::get('$aid');
+    $aname = Session::get('$aname');
+    $data = array('aid' => $aid, 'aname' => $aname,'skill'=>$req->skill_name);
+    DB::table('alumniskill')->insert($data);
+    return redirect("alumniprofile");
+}
+public function alumniaddlanguage(Request $req){
+    $aid = Session::get('$aid');
+    $aname = Session::get('$aname');
+    $data = array('aid' => $aid, 'aname' => $aname,'lang'=>$req->lang);
+    DB::table('alumnilanguage')->insert($data);
+    return redirect("alumniprofile");
+}
+public function dletepost($id){
+    DB::delete('DELETE FROM `newspost` WHERE id= ?', [$id]);
+
+    return redirect("alumniprofile");
+}
+}
+
