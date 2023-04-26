@@ -24,7 +24,7 @@
 
                 <span>Enter your account</span>
                 <div class="infield">
-                    <input type="email" placeholder="ID" name="id"/>
+                    <input type="text" placeholder="ID" name="id"/>
                     <label></label>
                 </div>
                 <div class="infield">

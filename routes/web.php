@@ -197,6 +197,13 @@ Route::get('ready/{id}', [secend::class, 'ready']);
 
 Route::get('unlucky/{id}', [secend::class, 'unlucky']);
 
+Route::post('alumnilogin', [secend::class, 'alumnilogin']);
+Route::get('newsfeed', [secend::class, 'newsfeed']);
+Route::post('newsfeed', [secend::class, 'newspost']);
+
+Route::post('comment', [secend::class, 'comment']);
+
+Route::get('showcomment/{id}', [secend::class, 'showcomment']);
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
