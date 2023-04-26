@@ -204,6 +204,35 @@ Route::post('newsfeed', [secend::class, 'newspost']);
 Route::post('comment', [secend::class, 'comment']);
 
 Route::get('showcomment/{id}', [secend::class, 'showcomment']);
+
+Route::get('alumniprofile', [secend::class, 'alumniprofile']);
+
+Route::post('alumnieducation', [secend::class, 'alumnieducation']);
+
+
+Route::get('alumni_delete_education/{id}', [secend::class, 'alumni_delete_education']);
+
+
+
+Route::post('alumniaddexprience', [secend::class, 'alumniaddexprience']);
+
+Route::post('alumniaddskill', [secend::class, 'alumniaddskill']);
+
+Route::post('alumniaddlanguage', [secend::class, 'alumniaddlanguage']);
+
+
+Route::post('alumniaddpost', [secend::class, 'newspost']);
+
+Route::get('dletepost/{id}', [secend::class, 'dletepost']);
+
+Route::get('alumnieditprofile', [secend::class, 'alumnieditprofile']);
+
+Route::post('editalumniabout', [secend::class, 'editalumniabout']);
+
+Route::post('EditAlumniProfilePicture', [secend::class, 'EditAlumniProfilePicture']);
+
+Route::post('EditAlumniCoverPicture', [secend::class, 'EditAlumniCoverPicture']);
+
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);

@@ -7,39 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>
-        newsfeed
+        Edit profile
     </title>
 </head>
 
 <body>
+    @foreach ($data as $da)
+        <!--navbar start-->
+        <nav class="navbar">
 
 
-    <!--navbar start-->
-    <nav class="navbar">
+            <div class="navbar-left">
+                <a href="newsfeed" class="logo"><img src="images/logo.png"></a>
 
-
-        <div class="navbar-left">
-            <a href="newsfeed.php" class="logo"><img src="images/logo.png"></a>
-
-            <div class="search-box">
-                <img src="images/search.png">
-                <input type="text" placeholder="Search">
+                <div class="search-box">
+                    <img src="images/search.png">
+                    <input type="text" placeholder="Search">
+                </div>
             </div>
-        </div>
 
 
 
-        <div class="navbar-center">
-            <ul>
-                <li><a href="/newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
-                <li><a href="#"><img src="images/network.png"> <span>My Network</span></a></li>
+            <div class="navbar-center">
+                <ul>
+                    <li><a href="newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
+                    <li><a href="#"><img src="images/network.png"> <span>My Network</span></a></li>
 
-                <li><a href="#"><img src="images/message.png"> <span>Messaging</span></a></li>
+                    <li><a href="#"><img src="images/message.png"> <span>Messaging</span></a></li>
+                    <li><a href="#"><img src="images/notification.png"> <span>Notifications</span></a></li>
+                </ul>
+            </div>
 
-            </ul>
-        </div>
 
-        @foreach ($data as $da)
+
             <div class="navbar-right">
                 <div class="online">
                     <img src="images/{{ $da->image }}" class="nav-profile-img" onclick="toggleMenu()">
@@ -47,20 +47,17 @@
 
             </div>
             <!--profile drop menu-->
-
-
-
             <div class="profile-menu-wrap" id="profileMenu">
                 <div class="profile-menu">
                     <div class="user-info">
                         <img src="images/{{ $da->image }}">
                         <div>
                             <h3>{{ $da->name }}</h3>
-                            <a href="/alumniprofile">See Your Profile</a>
+                            <a href="alumniprofile">See Your Profile</a>
                         </div>
                     </div>
                     <hr>
-                    <a href="/alumnilogin" class="profile-manu-link">
+                    <a href="alumnilogin" class="profile-manu-link">
                         <img src="images/logout.png">
                         <p>Logout</p>
                         <span>></span>
@@ -69,537 +66,125 @@
             </div>
 
 
-    </nav>
-    <!--navbar end-->
-
-    <div class="container">
-
-
-        <!--left-sidebar-->
-        <div class="left-sidebar">
-
-            <div class="sidebar-profile-box">
-                <img src="images/{{ $da->cover }}" width="100%">
-                <div class="sidebar-profile-info">
-                    <img src="images/{{ $da->image }}">
-                    <a href="profile.php">
-                        <h1>{{ $da->name }}</h1>
-                    </a>
-                    <h3>{{ $da->intro }}</h3>
-
-                </div>
-
-            </div>
-
-            <div class="sidebar-activity" id="sidebarActivity">
-                <h3>RECENT</h3>
-                <a href="#"><img src="images/recent.png">Web Development</a>
-
-                <br>
-                <hr>
-
-
-                <h3>GROUPS</h3>
-                <a href="#"><img src="images/group.png">Web Design Groupt</a>
-
-                <div class="discover-more-link">
-                    <a href="#">Discover more</a>
-                </div>
-            </div>
-
-            <p id="showMoreLink" onclick="toggleActivity()">Show More <b>+</b></p>
-
-
-        </div>
-
-
-
-        <!--main-content-->
-        <div class="main-content">
-            <div class="create-post">
-                <div class="create-post-input">
-                    <img src="images/{{ $da->image }}">
-
-                    <textarea id="post-textarea" rows="4" placeholder="Write a post here!"></textarea>
-                </div>
-                <div class="create-post-links">
-                    <li><img src="images/event.png">Event</li>
-                    <li><img src="images/p.png">Photo</li>
-                    <li><img src="images/video (2).png">Video</li>
-                    <li>Post</li>
-                </div>
-            </div>
-            <center>
-                <div id="popup-container">
-                    <div id="popup-content">
-                        <center>
-                            <section class="post" style="margin-left: 50%; margin-right: 50%;">
-
-                                <header>Create Post</header>
-                                <form action="" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="content">
-                                        <img src="images/{{ $da->image }}" alt="logo"
-                                            style="    overflow-clip-margin: content-box;
-    overflow: clip;    width: 40px;
-    border-radius: 50%;
-    margin-right: 10px;">
-
-                                        <div class="details">
-                                            <p>{{ $da->name }}</p>
-
-                                        </div>
-                                    </div>
-                                    <textarea placeholder="What's on your mind?" spellcheck="false" name="postText"></textarea>
-                                    <div class="theme-emoji">
-                                        <img src="icons/theme.svg" alt="theme">
-                                        <img src="icons/smile.svg" alt="smile">
-                                    </div>
-                                    <div class="options">
-                                        <p>Add to Your Post</p>
-                                        <ul class="list">
-                                            <li>
-
-                                                <input type="file" name="file">
-                                            </li>
-
-
-
-                                            <li><img src="icons/tag.svg" alt="gallery"></li>
-                                            <li><img src="icons/emoji.svg" alt="gallery"></li>
-                                            <li><img src="icons/mic.svg" alt="gallery"></li>
-                                            <li><img src="icons/more.svg" alt="gallery"></li>
-                                        </ul>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Post</button>
-                                </form>
-
-                            </section>
-                        </center>
-                        <span id="popup-close">&times;</span>
+        </nav>
+        <!--navbar end-->
+        <br><br>
+        <br><br>
+        <div class="container">
+            <div class="form-container">
+                <h2>Edit Information</h2>
+                <form action="editalumniabout" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">About</label>
+                        <textarea name="intro" id="" cols="30" rows="10">{{ $da->intro }}</textarea>
                     </div>
-                </div>
-
-                <style>
-                    #popup-container {
-                        display: none;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0, 0, 0, 0.5);
-                        z-index: 1;
-                    }
-
-                    #popup-content {
-                        background-color: rgb(0 0 0 / 0%);
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        padding: 20px;
-                        width: 100px;
-                        height: 400px;
-                    }
-
-                    #popup-close {
-                        position: absolute;
-                        top: 10px;
-                        right: 10px;
-                        font-size: 30px;
-                        font-weight: bold;
-                        color: #aaa;
-                        cursor: pointer;
-                    }
-
-                    #popup-close:hover {
-                        color: black;
-                    }
-
-                    #popup-container .active {
-                        height: 590px;
-                    }
-
-                    #popup-container #popup-content {
-                        width: 1000px;
-                        display: flex;
-                    }
-
-                    #popup-container section {
-                        width: 500px;
-                        background: #fff;
-                    }
-
-                    #popup-container img {
-                        cursor: pointer;
-                    }
-
-                    #popup-container .post {
-                        transition: margin-left 0.18s ease;
-                    }
-
-                    #popup-container.active .post {
-                        margin-left: -500px;
-                    }
-
-                    .post header {
-                        font-size: 22px;
-                        font-weight: 600;
-                        padding: 17px 0;
-                        text-align: center;
-                        border-bottom: 1px solid #bfbfbf;
-                    }
-
-                    .post form {
-                        margin: 20px 25px;
-                    }
-
-                    .post form .content {
-                        display: flex;
-                        align-items: center;
-                    }
-
-                    .post form .content img {
-                        cursor: default;
-                        max-width: 52px;
-                    }
-
-                    .post form .content .details {
-                        margin: -3px 0 0 12px;
-                    }
-
-                    form .content .details p {
-                        font-size: 17px;
-                        font-weight: 500;
-                    }
-
-                    .content .details .privacy {
-                        display: flex;
-                        height: 25px;
-                        cursor: pointer;
-                        padding: 0 10px;
-                        font-size: 11px;
-                        margin-top: 3px;
-                        border-radius: 5px;
-                        align-items: center;
-                        max-width: 98px;
-                        background: #E4E6EB;
-                        justify-content: space-between;
-                    }
-
-                    .details .privacy span {
-                        font-size: 13px;
-                        margin-top: 1px;
-                        font-weight: 500;
-                    }
-
-                    .details .privacy i:last-child {
-                        font-size: 13px;
-                        margin-left: 1px;
-                    }
-
-                    form :where(textarea, button) {
-                        width: 100%;
-                        outline: none;
-                        border: none;
-                    }
-
-                    form textarea {
-                        resize: none;
-                        font-size: 18px;
-                        margin-top: 30px;
-                        min-height: 100px;
-                    }
-
-                    form textarea::placeholder {
-                        color: #858585;
-                    }
-
-                    form textarea:focus::placeholder {
-                        color: #b3b3b3;
-                    }
-
-                    form :where(.theme-emoji, .options) {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                    }
-
-                    .theme-emoji img:last-child {
-                        max-width: 24px;
-                    }
-
-                    form .options {
-                        height: 57px;
-                        margin: 15px 0;
-                        padding: 0 15px;
-                        border-radius: 7px;
-                        border: 1px solid #B9B9B9;
-                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-                    }
-
-                    form .options :where(.list, li),
-                    .audience :where(.arrow-back, .icon, li .radio) {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-
-                    form .options p {
-                        color: #595959;
-                        font-size: 15px;
-                        font-weight: 500;
-                        cursor: default;
-                    }
-
-                    form .options .list {
-                        list-style: none;
-                    }
-
-                    .options .list li {
-                        height: 42px;
-                        width: 42px;
-                        margin: 0 -1px;
-                        cursor: pointer;
-                        border-radius: 50%;
-                    }
-
-                    .options .list li:hover {
-                        background: #f0f1f4;
-                    }
-
-                    .options .list li img {
-                        width: 23px;
-                    }
-
-                    form button {
-                        height: 53px;
-                        color: #fff;
-                        font-size: 18px;
-                        font-weight: 500;
-                        cursor: pointer;
-                        color: #BCC0C4;
-                        cursor: no-drop;
-                        border-radius: 7px;
-                        background: #e2e5e9;
-                        transition: all 0.3s ease;
-                    }
-
-                    form textarea:valid~button {
-                        color: #fff;
-                        cursor: pointer;
-                        background: #4599FF;
-                    }
-
-                    form textarea:valid~button:hover {
-                        background: #1a81ff;
-                    }
-                </style>
-
-                <script>
-                    const postTextarea = document.getElementById('post-textarea');
-                    const popupContainer = document.getElementById('popup-container');
-                    const popupClose = document.getElementById('popup-close');
-
-                    postTextarea.addEventListener('click', () => {
-                        popupContainer.style.display = 'block';
-                    });
-
-                    popupClose.addEventListener('click', () => {
-                        popupContainer.style.display = 'none';
-                    });
-                </script>
-
-                <div class="sort-by">
-                    <hr>
-                    <p>Sort by: <span>top <img src="images/down-arrow.png"></span></p>
-                </div>
-
-
-                <!--post show-->
-                @foreach ($data1 as $da1)
-                    <div class="post">
-                        <div class="post-author">
-                            <img src="images/{{ $da1->userimage }}">
-                            <div>
-                                <h1>{{ $da1->aname }}</h1>
-                                <small>{{ $da1->time }}</small>
-
-                            </div>
-                        </div>
-                        <p>{{ $da1->text }}</p>
-                        <img src="images/{{ $da1->image }}" width="100%">
-
-                        <div class="post-activity">
-
-                            <div class="post-activity-link">
-
-                            </div>
-                            <script>
-                                const likeButton = document.getElementById("like-button");
-
-                                likeButton.addEventListener("click", function() {
-                                    if (likeButton.src.endsWith("like.png")) {
-                                        likeButton.src = "images/like1.png";
-                                    } else {
-                                        likeButton.src = "images/like.png";
-                                    }
-                                });
-                            </script>
-                            <div class="post-activity-link">
-                                <img src="images/comment.png">
-                                <span>
-                                    <button onclick="myFunction('{{ $da1->id }}')">Comment</button>
-
-                                </span>
-                            </div>
-                            <div>
-                                <img src="images/{{ $da1->userimage }}" class="post-activity-user-icon">
-                                <img src="images/down-arrow.png" class="post-activity-arrow-icon">
-                            </div>
-
-                        </div>
-                        <hr>
-                        <br>
-                        <div style="text-align:left">
-
-
-
-                            <div id="myPopup">
-                               <a href=''><button id='close'>&times;</button></a>
-
-                            </div>
-                            <script>
-                                function closef(){
-
-                                    //alert("Hello! I am an alert box!!");
-                                    document.querySelector(".myPopup").style.display = "none";
-                                }
-
-                            </script>
-
-                            <script>
-                                function myFunction(id) {
-                                    var t_data = document.getElementById("myPopup");
-
-
-                                    var xhr = new XMLHttpRequest();
-                                    xhr.open("GET", "/showcomment/" + id, true);
-                                    xhr.send();
-                                    xhr.onreadystatechange = function() {
-
-                                        if (xhr.readyState == 4 && xhr.status == 200) {
-                                            var obj = JSON.parse(xhr.responseText);
-                                            var myPopup = document.getElementById("myPopup");
-                                            myPopup.style.display = "block";
-
-                                            for (i = 0; i < obj.data.length; i++) {
-
-                                                t_data.innerHTML += " <img src='images/" + obj.data[i][
-                                                        'userImage'
-                                                    ] + "'class='post-activity-user-icon'>" + "<h3>" + obj.data[i]['aname'] + "</h3><p>" + obj
-                                                    .data[i]['comment'] + "</p><br>"
-                                            }
-
-
-
-
-
-
-                                            //document.getElementById("myPopup").innerHTML = this.responseText;
-
-
-
-
-                                        }
-
-
-
-                                    }
-
-
-
-                                }
-                            </script>
-                        </div>
-
-                        <br>
-                        <!--comment start-->
-                        <form action="/comment" method="post" enctype="multipart/form">
-                            @csrf
-
-                            <div class="create-post">
-                                <div class="create-post-input">
-                                    <img src="images/{{ $da->image }}">
-
-                                    <textarea rows="2" placeholder="Write a comment here!" name="comments"></textarea>
-                                    <input type="hidden" name='cid' value="{{ $da1->id }}">
-                                    <input type="hidden" name='aid' value="{{ $da1->aid }}">
-                                    <input type="hidden" name='aname' value="{{ $da1->aname }}">
-                                    <input type="hidden" name='userimage' value="{{ $da->image }}">
-
-
-
-                                    <button type="submit"
-                                        style="  border-color: white; background-color: white;"><img
-                                            src="images/send.png" alt=""></button>
-
-                                </div>
-
-
-                            </div>
-
-                        </form>
-                        <!--comment end-->
-
-
+                    <div class="form-group">
+                        <center><button type="submit" style="width: 100%;">Done</button></center>
                     </div>
-                    <!--post show end-->
-                @endforeach
-                @endforeach
+                </form>
 
+                <form action="EditAlumniProfilePicture" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <h5>Old Profile</h5>
 
+                        <img src="images/{{ $da->image }}" alt="old profile" style="width: 40%;"/>
 
-
-
-        </div>
-
-
-
-        <!--right-sidebar-->
-        <div class="right-sidebar">
-            <div class="sidebar-news">
-                <img src="images/more.png" class="info-icon">
-                <h2>Events</h2>
-                <a href="#">Project Showcase</a>
-                <span>10 March, 2022; at UIU</span>
-                <a href="#" class="read-more-link">Read More</a>
+                            <div class="form-group">
+                                <label for="image1">Profile Picture</label>
+                                <input type="file" name="file">
+                            </div>
+                            <div class="form-group">
+                                <center><button type="submit" style="width: 100%;">Done</button></center>
+                            </div>
+                </form>
+                <form action="EditAlumniCoverPicture" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <h5>Old Cover</h5>
+                    <img src="images/{{ $da->cover }}" alt="old profile" style="width: 40%;"/>
+                            <div class="form-group">
+                                <label for="image2">Cover Picture</label>
+                                <input type="file" name="file">
+                            </div>
+                            <div class="form-group">
+                                <center><button type="submit" style="width: 100%;">Done</button></center>
+                            </div>
+                </form>
             </div>
-            <div class="sidebar-ad">
-                <small>Job Ads</small>
-                <p>Job Description</p>
-                <div>
-                    <img src="images/sakib.jpg">
-                    <img src="images/IMG-631127da9460e7.69184791.jpg">
-                </div>
-                <b>dhfurhreghr</b>
-                <a href="#" class="ad-link">Learn More</a>
-            </div>
-        </div>
+    @endforeach
+    <style>
+        .form-container {
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 600px;
+            margin: auto;
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-group input[type="file"] {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .form-group button[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+
+
+
+    <!--
+ <div class="profile-footer">
+   <div class="sidebar-useful-links">
+
+      <div class="copyright-msg">
+        <img src="images/logo.png">
+
+      </div>
+      <p>Created at 2023 by team</p>
+    </div>
+ </div>
+ -->
+
 
 
 
 
     </div>
-    <div class="sidebar-useful-links">
 
-        <div class="copyright-msg">
-            <img src="images/logo.png">
 
-        </div>
-        <p>Created at 2023 by Team Echo</p>
-    </div>
 
 
     <script>
@@ -610,63 +195,6 @@
 
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-        let sideActivity = document.getElementById("sidebarActivity");
-        let moreLink = document.getElementById("showMoreLink");
-
-        function toggleActivity() {
-            sideActivity.classList.toggle("open-activity");
-
-            if (sideActivity.classList.contains("open-activity")) {
-                moreLink.innerHTML = "Show less <b>-</b>";
-            } else {
-                moreLink.innerHTML = "Show more <b>+</b>";
-            }
-        }
-    </script>
-
-    <style>
-        #myPopup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #000;
-            width: 300px;
-        }
-
-        #myPopup form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #myPopup label {
-            margin-bottom: 10px;
-        }
-
-        #myPopup input[type="text"] {
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid #ccc;
-        }
-
-        #myPopup input[type="submit"] {
-            padding: 5px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-
-        #myPopup input[type="submit"]:hover {
-            background-color: #3e8e41;
-        }
-    </style>
     <style>
         * {
             margin: 0;
@@ -1630,7 +1158,7 @@
 
         }
     </style>
-
 </body>
+
 
 </html>
