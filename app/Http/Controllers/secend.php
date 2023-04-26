@@ -295,5 +295,83 @@ public function dletepost($id){
 
     return redirect("alumniprofile");
 }
+public function alumnieditprofile(){
+    $aid = Session::get('$aid');
+
+    $data = DB::select(" SELECT * FROM `alumni` WHERE id='$aid' ");
+
+    return view('alumnieditprofile')->with(['data' => $data]);
+}
+public function editalumniabout(Request $req){
+    $aid = Session::get('$aid');
+
+    DB::update("UPDATE `alumni` SET `intro`='$req->intro' WHERE id=?", [$aid]);
+
+    return redirect("alumniprofile");
+
+}
+public function EditAlumniProfilePicture(Request $req){
+
+     $file=$req->file;
+    $img_name = $_FILES['file']['name'];
+    $img_size = $_FILES['file']['size'];
+    $tmp_name = $_FILES['file']['tmp_name'];
+    $error = $_FILES['file']['error'];
+
+    if ($error === 0) {
+
+        $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+        $img_ex_lc = strtolower($img_ex);
+
+        $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
+
+        if (in_array($img_ex_lc, $allowed_exs)) {
+            $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+            $img_upload_path = 'images/' . $new_img_name;
+            move_uploaded_file($tmp_name, $img_upload_path);
+
+            // Insert into Database
+
+
+            $aid = Session::get('$aid');
+
+            DB::update("UPDATE `alumni` SET `image`='$new_img_name' WHERE id=?", [$aid]);
+
+            return redirect("alumniprofile");
+        }
+    }
+}
+public function EditAlumniCoverPicture(Request $req){
+
+    $file=$req->file;
+    $img_name = $_FILES['file']['name'];
+    $img_size = $_FILES['file']['size'];
+    $tmp_name = $_FILES['file']['tmp_name'];
+    $error = $_FILES['file']['error'];
+
+    if ($error === 0) {
+
+        $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+        $img_ex_lc = strtolower($img_ex);
+
+        $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
+
+        if (in_array($img_ex_lc, $allowed_exs)) {
+            $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+            $img_upload_path = 'images/' . $new_img_name;
+            move_uploaded_file($tmp_name, $img_upload_path);
+
+            // Insert into Database
+
+
+            $aid = Session::get('$aid');
+
+            DB::update("UPDATE `alumni` SET `cover`='$new_img_name' WHERE id=?", [$aid]);
+
+            return redirect("alumniprofile");
+        }
+    }
+
+}
 }
 

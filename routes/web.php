@@ -225,6 +225,14 @@ Route::post('alumniaddpost', [secend::class, 'newspost']);
 
 Route::get('dletepost/{id}', [secend::class, 'dletepost']);
 
+Route::get('alumnieditprofile', [secend::class, 'alumnieditprofile']);
+
+Route::post('editalumniabout', [secend::class, 'editalumniabout']);
+
+Route::post('EditAlumniProfilePicture', [secend::class, 'EditAlumniProfilePicture']);
+
+Route::post('EditAlumniCoverPicture', [secend::class, 'EditAlumniCoverPicture']);
+
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
