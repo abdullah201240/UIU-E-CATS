@@ -137,7 +137,7 @@ class secend extends Controller
     public function addalumni(Request $req)
     {
         $pass = md5("1234");
-        $data = array('id' => $req->id, 'name' => $req->name, 'password' => $pass, 'bdate' => $req->birthdaytime, "department" => $req->department, "email" => $req->email, "phone" => $req->number, "gender" => $req->gender);
+        $data = array('id' => $req->id, 'name' => $req->name, 'password' => $pass, 'bdate' => $req->birthdaytime, "department" => $req->department, "email" => $req->email, "phone" => $req->number, "gender" => $req->gender,"image"=>"","cover"=>"","intro"=>"");
         DB::table('alumni')->insert($data);
 
         return redirect("addalumni");
@@ -197,15 +197,15 @@ class secend extends Controller
         $data = DB::select("SELECT * FROM `alumni` WHERE id='$aid' ");
         $data1 = DB::select("SELECT * FROM `newspost` ORDER BY(id) DESC ");
 
-        return view('newsfeed')->with(['data' => $data,'data1'=>$data1]);
+        return view('newsfeed')->with(['data' => $data, 'data1' => $data1]);
     }
     public function newspost(Request $req)
     {
         $aid = Session::get('$aid');
         $aname = Session::get('$aname');
-        $aimage=Session::get('$aimage');
+        $aimage = Session::get('$aimage');
         $file = $req->file;
-        $time=date("Y-m-d h:m:s");
+        $time = date("Y-m-d h:m:s");
 
         $img_name = $_FILES['file']['name'];
         $img_size = $_FILES['file']['size'];
@@ -225,153 +225,189 @@ class secend extends Controller
                 move_uploaded_file($tmp_name, $img_upload_path);
 
                 // Insert into Database
-                $data = array('aid' => $aid, 'userimage'=>$aimage,'time'=>$time,'aname' => $aname, 'image' => $new_img_name, 'text' => $req->postText);
+                $data = array('aid' => $aid, 'userimage' => $aimage, 'time' => $time, 'aname' => $aname, 'image' => $new_img_name, 'text' => $req->postText);
                 DB::table('newspost')->insert($data);
 
                 return redirect("newsfeed");
             }
         }
     }
-    public function comment(Request $req){
-        $data = array('aid' => $req->aid, 'userimage'=>$req->userimage,'cid'=>$req->cid,'aname' => $req->aname,  'comment' => $req->comments);
-                DB::table('postcomment')->insert($data);
-                return redirect("newsfeed");
+    public function comment(Request $req)
+    {
+        $data = array('aid' => $req->aid, 'userimage' => $req->userimage, 'cid' => $req->cid, 'aname' => $req->aname,  'comment' => $req->comments);
+        DB::table('postcomment')->insert($data);
+        return redirect("newsfeed");
     }
-    public function showcomment($id){
+    public function showcomment($id)
+    {
         $data = DB::select("SELECT * FROM `postcomment` WHERE cid='$id' ");
         return response()->json(['data' => $data]);
-
     }
-public function alumniprofile(){
-    $aid = Session::get('$aid');
+    public function alumniprofile()
+    {
+        $aid = Session::get('$aid');
 
-    $data = DB::select(" SELECT * FROM `alumni` WHERE id='$aid' ");
-    $data1 = DB::select(" SELECT * FROM `alumnieducation` WHERE aid='$aid' ");
-    $data2 = DB::select(" SELECT * FROM `alumniskill` WHERE aid='$aid' ");
-    $data3 = DB::select(" SELECT * FROM `alumnilanguage` WHERE aid='$aid' ");
-    $data4 = DB::select(" SELECT * FROM `newspost` WHERE aid='$aid' ");
+        $data = DB::select(" SELECT * FROM `alumni` WHERE id='$aid' ");
+        $data1 = DB::select(" SELECT * FROM `alumnieducation` WHERE aid='$aid' ");
+        $data2 = DB::select(" SELECT * FROM `alumniskill` WHERE aid='$aid' ");
+        $data3 = DB::select(" SELECT * FROM `alumnilanguage` WHERE aid='$aid' ");
+        $data4 = DB::select(" SELECT * FROM `newspost` WHERE aid='$aid' ");
 
-    return view('alumniprofile')->with(['data' => $data,'data1'=>$data1,'data2'=>$data2,'data3'=>$data3,'data4'=>$data4]);
-
-}
-public function alumnieducation(Request $req){
-    $aid = Session::get('$aid');
-    $aname = Session::get('$aname');
-    $data = array('aid' => $aid, 'aname' => $aname,'name'=>$req->name,'degree'=>$req->degree,  'year' => $req->year);
-    DB::table('alumnieducation')->insert($data);
-    return redirect("alumniprofile");
-}
-public function alumni_delete_education($id){
-    DB::delete('DELETE FROM `alumnieducation` WHERE id= ?', [$id]);
-
-
-    return redirect("alumniprofile");
-}
-public function alumniaddexprience(Request $req){
-
- $aid = Session::get('$aid');
-    $aname = Session::get('$aname');
-    $data = array('aid' => $aid, 'aname' => $aname,'description'=>$req->description,'employment_type'=>$req->employment_type,  'job_title' => $req->job_title,'company_name'=>$req->company_name);
-    DB::table('alumniexprience')->insert($data);
-    return redirect("alumniprofile");
-
-}
-public function alumniaddskill(Request $req){
-    $aid = Session::get('$aid');
-    $aname = Session::get('$aname');
-    $data = array('aid' => $aid, 'aname' => $aname,'skill'=>$req->skill_name);
-    DB::table('alumniskill')->insert($data);
-    return redirect("alumniprofile");
-}
-public function alumniaddlanguage(Request $req){
-    $aid = Session::get('$aid');
-    $aname = Session::get('$aname');
-    $data = array('aid' => $aid, 'aname' => $aname,'lang'=>$req->lang);
-    DB::table('alumnilanguage')->insert($data);
-    return redirect("alumniprofile");
-}
-public function dletepost($id){
-    DB::delete('DELETE FROM `newspost` WHERE id= ?', [$id]);
-
-    return redirect("alumniprofile");
-}
-public function alumnieditprofile(){
-    $aid = Session::get('$aid');
-
-    $data = DB::select(" SELECT * FROM `alumni` WHERE id='$aid' ");
-
-    return view('alumnieditprofile')->with(['data' => $data]);
-}
-public function editalumniabout(Request $req){
-    $aid = Session::get('$aid');
-
-    DB::update("UPDATE `alumni` SET `intro`='$req->intro' WHERE id=?", [$aid]);
-
-    return redirect("alumniprofile");
-
-}
-public function EditAlumniProfilePicture(Request $req){
-
-     $file=$req->file;
-    $img_name = $_FILES['file']['name'];
-    $img_size = $_FILES['file']['size'];
-    $tmp_name = $_FILES['file']['tmp_name'];
-    $error = $_FILES['file']['error'];
-
-    if ($error === 0) {
-
-        $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-        $img_ex_lc = strtolower($img_ex);
-
-        $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
-
-        if (in_array($img_ex_lc, $allowed_exs)) {
-            $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-            $img_upload_path = 'images/' . $new_img_name;
-            move_uploaded_file($tmp_name, $img_upload_path);
-
-            // Insert into Database
+        return view('alumniprofile')->with(['data' => $data, 'data1' => $data1, 'data2' => $data2, 'data3' => $data3, 'data4' => $data4]);
+    }
+    public function alumnieducation(Request $req)
+    {
+        $aid = Session::get('$aid');
+        $aname = Session::get('$aname');
+        $data = array('aid' => $aid, 'aname' => $aname, 'name' => $req->name, 'degree' => $req->degree,  'year' => $req->year);
+        DB::table('alumnieducation')->insert($data);
+        return redirect("alumniprofile");
+    }
+    public function alumni_delete_education($id)
+    {
+        DB::delete('DELETE FROM `alumnieducation` WHERE id= ?', [$id]);
 
 
-            $aid = Session::get('$aid');
+        return redirect("alumniprofile");
+    }
+    public function alumniaddexprience(Request $req)
+    {
 
-            DB::update("UPDATE `alumni` SET `image`='$new_img_name' WHERE id=?", [$aid]);
+        $aid = Session::get('$aid');
+        $aname = Session::get('$aname');
+        $data = array('aid' => $aid, 'aname' => $aname, 'description' => $req->description, 'employment_type' => $req->employment_type,  'job_title' => $req->job_title, 'company_name' => $req->company_name);
+        DB::table('alumniexprience')->insert($data);
+        return redirect("alumniprofile");
+    }
+    public function alumniaddskill(Request $req)
+    {
+        $aid = Session::get('$aid');
+        $aname = Session::get('$aname');
+        $data = array('aid' => $aid, 'aname' => $aname, 'skill' => $req->skill_name);
+        DB::table('alumniskill')->insert($data);
+        return redirect("alumniprofile");
+    }
+    public function alumniaddlanguage(Request $req)
+    {
+        $aid = Session::get('$aid');
+        $aname = Session::get('$aname');
+        $data = array('aid' => $aid, 'aname' => $aname, 'lang' => $req->lang);
+        DB::table('alumnilanguage')->insert($data);
+        return redirect("alumniprofile");
+    }
+    public function dletepost($id)
+    {
+        DB::delete('DELETE FROM `newspost` WHERE id= ?', [$id]);
 
-            return redirect("alumniprofile");
+        return redirect("alumniprofile");
+    }
+    public function alumnieditprofile()
+    {
+        $aid = Session::get('$aid');
+
+        $data = DB::select(" SELECT * FROM `alumni` WHERE id='$aid' ");
+
+        return view('alumnieditprofile')->with(['data' => $data]);
+    }
+    public function editalumniabout(Request $req)
+    {
+        $aid = Session::get('$aid');
+
+        DB::update("UPDATE `alumni` SET `intro`='$req->intro' WHERE id=?", [$aid]);
+
+        return redirect("alumniprofile");
+    }
+    public function EditAlumniProfilePicture(Request $req)
+    {
+
+        $file = $req->file;
+        $img_name = $_FILES['file']['name'];
+        $img_size = $_FILES['file']['size'];
+        $tmp_name = $_FILES['file']['tmp_name'];
+        $error = $_FILES['file']['error'];
+
+        if ($error === 0) {
+
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
+
+            $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
+
+            if (in_array($img_ex_lc, $allowed_exs)) {
+                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                $img_upload_path = 'images/' . $new_img_name;
+                move_uploaded_file($tmp_name, $img_upload_path);
+
+                // Insert into Database
+
+
+                $aid = Session::get('$aid');
+
+                DB::update("UPDATE `alumni` SET `image`='$new_img_name' WHERE id=?", [$aid]);
+
+                return redirect("alumniprofile");
+            }
         }
     }
-}
-public function EditAlumniCoverPicture(Request $req){
+    public function EditAlumniCoverPicture(Request $req)
+    {
 
-    $file=$req->file;
-    $img_name = $_FILES['file']['name'];
-    $img_size = $_FILES['file']['size'];
-    $tmp_name = $_FILES['file']['tmp_name'];
-    $error = $_FILES['file']['error'];
+        $file = $req->file;
+        $img_name = $_FILES['file']['name'];
+        $img_size = $_FILES['file']['size'];
+        $tmp_name = $_FILES['file']['tmp_name'];
+        $error = $_FILES['file']['error'];
 
-    if ($error === 0) {
+        if ($error === 0) {
 
-        $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-        $img_ex_lc = strtolower($img_ex);
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
 
-        $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
+            $allowed_exs = array("jpg", "jpeg", "png", "pdf", "doc", "ppt");
 
-        if (in_array($img_ex_lc, $allowed_exs)) {
-            $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-            $img_upload_path = 'images/' . $new_img_name;
-            move_uploaded_file($tmp_name, $img_upload_path);
+            if (in_array($img_ex_lc, $allowed_exs)) {
+                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                $img_upload_path = 'images/' . $new_img_name;
+                move_uploaded_file($tmp_name, $img_upload_path);
 
-            // Insert into Database
+                // Insert into Database
 
 
-            $aid = Session::get('$aid');
+                $aid = Session::get('$aid');
 
-            DB::update("UPDATE `alumni` SET `cover`='$new_img_name' WHERE id=?", [$aid]);
+                DB::update("UPDATE `alumni` SET `cover`='$new_img_name' WHERE id=?", [$aid]);
 
-            return redirect("alumniprofile");
+                return redirect("alumniprofile");
+            }
         }
     }
+    public function alumnifind(){
+        $aid = Session::get('$aid');
 
-}
-}
+        $data = DB::select(" SELECT * FROM `alumni` ");
+        $data1 = DB::select(" SELECT * FROM `alumni` where id='$aid'");
 
+        return view('alumnifind')->with(['data' => $data,'data1' => $data1]);
+    }
+    public function connectallumni($name,$image,$id,$email){
+        $aid = Session::get('$aid');
+        $aname = Session::get('$aname');
+        $aimage = Session::get('$aimage');
+        $data = array('aid' => $aid, 'aname' => $aname, 'cid' => $id,'cname'=>$name,'cimage'=>$image,'aimage'=>$aimage,'cemail'=>$email);
+        DB::table('alumniconnect')->insert($data);
+        return redirect("alumnifind");
+
+    }
+    public function mynetwork() {
+        $aid = Session::get('$aid');
+        $data = DB::select(" SELECT * FROM `alumni` where id='$aid'");
+
+        $data1 = DB::select("SELECT * FROM `alumniconnect` WHERE aid='$aid'");
+        return view('mynetwork')->with(['data' => $data,'data1' => $data1]);
+    }
+    public function networkremove($id){
+        DB::delete('DELETE FROM `alumniconnect` WHERE id= ?', [$id]);
+
+        return redirect("mynetwork");
+    }
+}
