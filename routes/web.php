@@ -233,6 +233,15 @@ Route::post('EditAlumniProfilePicture', [secend::class, 'EditAlumniProfilePictur
 
 Route::post('EditAlumniCoverPicture', [secend::class, 'EditAlumniCoverPicture']);
 
+
+Route::get('alumnifind', [secend::class, 'alumnifind']);
+
+Route::get('connectallumni/{name}/{image}/{id}/{email}', [secend::class, 'connectallumni']);
+
+Route::get('mynetwork', [secend::class, 'mynetwork']);
+
+Route::get('networkremove/{id}', [secend::class, 'networkremove']);
+
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
