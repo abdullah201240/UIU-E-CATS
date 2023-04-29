@@ -32,7 +32,7 @@ body {
 
 main.table {
     width: 68vw;
-    /*height: 90vh;*/
+    height: 90vh;
     background-color: #fff5;
 
     backdrop-filter: blur(7px);

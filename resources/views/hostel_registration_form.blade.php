@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('hlayout')
 @section('content')
 
 
@@ -526,7 +526,7 @@
 
     <center>
         <div class="mb-3" style="">
-            <label for="sourceSearch" class="form-label">Hostel check in</label>
+            <label for="sourceSearch" class="form-label"><h1>Hostel check in</h1></label>
             <!-- Search Functionality -->
 
 
