@@ -3,7 +3,7 @@
 
 
 
-    
+
 <!DOCTYPE html>
 <html lang="en" title="Coding design">
 
@@ -109,7 +109,7 @@ main.table {
     visibility: hidden;
 }
 
-.table__body:hover::-webkit-scrollbar-thumb{ 
+.table__body:hover::-webkit-scrollbar-thumb{
     visibility: visible;
 }
 
@@ -215,10 +215,10 @@ thead th span.icon-arrow {
     height: 1.3rem;
     border-radius: 50%;
     border: 1.4px solid transparent;
-    
+
     text-align: center;
     font-size: 1rem;
-    
+
     margin-left: .5rem;
     transition: .2s ease-in-out;
 }
@@ -249,7 +249,9 @@ thead th.active,tbody td.active {
 </head>
 
 <body>
+    <br><br>
     <main class="table">
+        <br>
         <section class="table__header">
             <h1>Course List</h1>
             <div class="input-group">
@@ -265,11 +267,11 @@ thead th.active,tbody td.active {
             <table>
                 <thead>
                     <tr>
-                       
+
                         <th> Course Code <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course Name <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Questions <span class="icon-arrow">&UpArrow;</span></th>
-                        
+
                     </tr>
                 </thead>
                  <tbody>
@@ -277,21 +279,21 @@ thead th.active,tbody td.active {
                         @foreach($data as $da)
                         <td> {{$da->cid}} </td>
                         <td>{{$da->cname}}</td>
-                       
+
                         <td>
                             <p class="status delivered"><a href="/allqustion/{{$da->cname}}">View</a></p>
                         </td>
-                       
+
                     </tr>
                     @endforeach
-                   
-                   
+
+
                 </tbody>
-              
+
             </table>
         </section>
-         
-        
+
+
     </main>
 </body>
 

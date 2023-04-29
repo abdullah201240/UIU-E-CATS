@@ -276,6 +276,7 @@ thead th.active,tbody td.active {
                         <th> States <span class="icon-arrow">&UpArrow;</span></th>
 
                         <th> Comment <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
 
                     </tr>
                 </thead>

@@ -108,12 +108,16 @@
 
 	.profile-description .description-text {
   height: 20px; /* Show only two lines of text */
+
+  .profile-description .description-text {
+  height: 20px; /* Show only two lines of text */
   overflow: hidden;
 }
 
 .profile-description .show-more {
   height: auto; /* Show full text */
 }
+
 
 </style>
 <script>
@@ -133,7 +137,7 @@ seeMoreLink.addEventListener('click', (event) => {
   <div class="modal-content">
     <span class="close">&times;</span>
     <center><h2 style="color: #045be6;">Add Experience Here</h2></center>
-    <form>
+
       <!-- Your form fields here -->
         <form class="add-experience-form" style=" max-width: 400px;
   margin: 0 auto;">
@@ -159,7 +163,7 @@ seeMoreLink.addEventListener('click', (event) => {
     <center><button type="button" class="btn btn-primary" style="background-color: #045be6;border-radius: 3%; color: white; width: 100px; height: 40px;">Done</button></center>
 
   </form>
-    </form>
+
   </div>
 </div>
 <style>
@@ -1058,54 +1062,17 @@ window.onclick = function(event) {
 
 </script>
 <div class="profile-desc-row">
-        		<img src="images/stanford.png">
-        		<div>
-        			<h3>United International University</h3>
-        			<b>BSCE</b>
-        			<b>2020-2024</b>
+
+    <div>
+          <h3>Govt job &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button></h3>
+        <b>BSCE</b>
+        <b>2020-2024</b>
 
 
-        		</div>
-             <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button>
-   </div>
 
- <div class="profile-desc-row hidden">
-    <img src="images/microsoft.png">
-    <div>
-      <h3>Govt job</h3>
-      <b>full time</b>
-      <p>description</p>
     </div>
-     <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button>
-  </div>
-  <div class="profile-desc-row hidden">
-    <img src="images/microsoft.png">
-    <div>
-      <h3>Govt job</h3>
-      <b>full time</b>
-      <p>description</p>
-    </div>
-     <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button>
-  </div>
- <div class="profile-desc-row hidden">
-    <img src="images/microsoft.png">
-    <div>
-      <h3>Govt job</h3>
-      <b>full time</b>
-      <p>description</p>
-    </div>
-     <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button>
-  </div>
+</div>
 
-  <div class="profile-desc-row hidden">
-    <img src="images/microsoft.png">
-    <div>
-      <h3>Govt job</h3>
-      <b>full time</b>
-      <p>description</p>
-    </div>
-     <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button>
-  </div>
   <hr>
   <a href="#" class="experience-link">Show All Experiences <img src="images/right-arrow.png"></a>
 </div>
@@ -1259,15 +1226,16 @@ submitBtn.addEventListener('click', (e) => {
 @foreach ($data1 as $da1 )
 
 
-<div class="profile-desc-row">
-            <img src="images/stanford.png">
+<div class="profile-desc-row1">
+
             <div>
-              <h3>{{$da1->name}}</h3>
+              <h3>{{$da1->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="alumni_delete_education/{{$da1->id}}"> <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button></a></h3>
+
               <b>{{$da1->degree}}</b>
               <b>{{$da1->year}}</b>
 
             </div>
-          <a href="alumni_delete_education/{{$da1->id}}"> <button type="button" class="btn btn-outline-danger" style="background-color: #c9466d;color: white; border-radius: 3%;border-color: #c9466d;">Delete</button></a>
+
    </div>
 
    @endforeach
@@ -1283,7 +1251,7 @@ margin-left: 8px;"></a>
 
 <script>
 const showMoreLink = document.querySelector('.education-link');
-const educations = document.querySelectorAll('.profile-desc-row');
+const educations = document.querySelectorAll('.profile-desc-row1');
 const educationCount = educations.length;
 
 let isExpanded = false;
@@ -1611,7 +1579,8 @@ window.onclick = function(event) {
 	@foreach ($data as $da)
 
    	<!--profile sidebar -->
-	<div class="profile-sidebar">
+       <div class="profile-sidebar" style=" overflow-x: hidden;
+       overflow-y: auto; max-height: 650px;">
 		<!--main-content-->
 
       <div class="create-post">
@@ -1889,7 +1858,8 @@ form textarea:valid ~ button:hover{
          <div class="post-author">
             <img src="images/{{ $da4->userimage }}">
             <div>
-              <h1>{{$da4->aname}}</h1>
+              <h1>{{$da4->aname}}
+                <a href="dletepost/{{$da4->id}}"><button type="button" class="btn btn-danger" style="border: #f0f2f5; background-color:#f0f2f5;margine-left:50%;">&times;</button></a></h1>
                 <small>{{ $da4->time }}</small>
 
             </div>
@@ -1921,9 +1891,8 @@ likeButton.addEventListener("click", function() {
 
 
        </div>
-<div>
-    <a href="dletepost/{{$da4->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
-</div>
+
+<br>
        @endforeach
 
 

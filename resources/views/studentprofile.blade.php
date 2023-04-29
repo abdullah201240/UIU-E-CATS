@@ -14,7 +14,10 @@
 
         <title>Student Profile</title>
     </head>
-
+<style>
+    body {
+        background: rgb(197, 224, 255);
+</style>
     <body>
         <div class="container" style="text-align:left">
             <div class="main-body">

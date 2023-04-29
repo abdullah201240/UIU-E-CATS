@@ -410,4 +410,10 @@ class secend extends Controller
 
         return redirect("mynetwork");
     }
+    public function showalumniprofile($id){
+
+
+        return view('showalumniprofile')->with(['data' => $data,'data1' => $data1]);
+
+    }
 }

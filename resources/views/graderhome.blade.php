@@ -1,5 +1,5 @@
  @extends('layout')
-@section('content') 
+@section('content')
 <!DOCTYPE html>
 <html lang="en" title="Coding design">
 
@@ -35,7 +35,7 @@ body {
 }
 
 main.table {
-    width: 68vw;
+    width: 75vw;
     /*height: 90vh;*/
     background-color: #fff5;
 
@@ -328,7 +328,7 @@ border-bottom-right-radius: 8px;
    <div class="container">
         <form id="form" action="" method="post">
             @csrf
-            
+
             <h4>We are going to assign "GRADER" for the following courses. You must have an "A" grade in the applied course. If you are interested then please select courses you want to apply.....</h4>
             <br><br>
 
@@ -352,7 +352,7 @@ border-bottom-right-radius: 8px;
                     <option value=''>Select</option>
 
 
-                    
+
                 </select>
                 <div class="error"></div>
             </div>

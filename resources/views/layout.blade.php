@@ -12,9 +12,9 @@
 
     <style>
         .footer {
-            position: fixed;
+            position: absolute;
             left: 0;
-            bottom: 0;
+
             width: 100%;
             height: 70px;
             text-align: center;
@@ -33,7 +33,7 @@
             <div class="logo_name">Uiu Accadamic Sulutions</div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
-        <ul class="nav-list">
+        <ul class="nav-list" style="margin-right:70%;">
 
             <li>
                 <a href="/home">
@@ -171,7 +171,7 @@
             left: 0;
             top: 0;
             height: 100%;
-            width: 78px;
+            width: 100px;
             background: #11101D;
             padding: 6px 14px;
             z-index: 99;

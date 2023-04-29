@@ -242,6 +242,8 @@ Route::get('mynetwork', [secend::class, 'mynetwork']);
 
 Route::get('networkremove/{id}', [secend::class, 'networkremove']);
 
+Route::get('showalumniprofile/{id}', [secend::class, 'showalumniprofile']);
+
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
