@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Events\Massage;
 use Session;
 use Datetime;
 use Response;
@@ -137,7 +138,7 @@ class secend extends Controller
     public function addalumni(Request $req)
     {
         $pass = md5("1234");
-        $data = array('id' => $req->id, 'name' => $req->name, 'password' => $pass, 'bdate' => $req->birthdaytime, "department" => $req->department, "email" => $req->email, "phone" => $req->number, "gender" => $req->gender,"image"=>"","cover"=>"","intro"=>"");
+        $data = array('id' => $req->id, 'name' => $req->name, 'password' => $pass, 'bdate' => $req->birthdaytime, "department" => $req->department, "email" => $req->email, "phone" => $req->number, "gender" => $req->gender, "image" => "", "cover" => "", "intro" => "");
         DB::table('alumni')->insert($data);
 
         return redirect("addalumni");
@@ -381,39 +382,74 @@ class secend extends Controller
             }
         }
     }
-    public function alumnifind(){
+    public function alumnifind()
+    {
         $aid = Session::get('$aid');
 
         $data = DB::select(" SELECT * FROM `alumni` ");
         $data1 = DB::select(" SELECT * FROM `alumni` where id='$aid'");
 
-        return view('alumnifind')->with(['data' => $data,'data1' => $data1]);
+        return view('alumnifind')->with(['data' => $data, 'data1' => $data1]);
     }
-    public function connectallumni($name,$image,$id,$email){
+    public function connectallumni($name, $image, $id, $email)
+    {
         $aid = Session::get('$aid');
         $aname = Session::get('$aname');
         $aimage = Session::get('$aimage');
-        $data = array('aid' => $aid, 'aname' => $aname, 'cid' => $id,'cname'=>$name,'cimage'=>$image,'aimage'=>$aimage,'cemail'=>$email);
+        $data = array('aid' => $aid, 'aname' => $aname, 'cid' => $id, 'cname' => $name, 'cimage' => $image, 'aimage' => $aimage, 'cemail' => $email);
         DB::table('alumniconnect')->insert($data);
         return redirect("alumnifind");
-
     }
-    public function mynetwork() {
+    public function mynetwork()
+    {
         $aid = Session::get('$aid');
         $data = DB::select(" SELECT * FROM `alumni` where id='$aid'");
 
         $data1 = DB::select("SELECT * FROM `alumniconnect` WHERE aid='$aid'");
-        return view('mynetwork')->with(['data' => $data,'data1' => $data1]);
+        return view('mynetwork')->with(['data' => $data, 'data1' => $data1]);
     }
-    public function networkremove($id){
+    public function networkremove($id)
+    {
         DB::delete('DELETE FROM `alumniconnect` WHERE id= ?', [$id]);
 
         return redirect("mynetwork");
     }
-    public function showalumniprofile($id){
+    public function showalumniprofile($id)
+
+    {
+        $aid = Session::get('$aid');
+        $data = DB::select(" SELECT * FROM `alumni` where id='$aid'");
+        $data1 = DB::select(" SELECT * FROM `alumni` where id='$id'");
+
+        $data2 = DB::select(" SELECT * FROM `alumnieducation` where id='$id'");
+        $data3= DB::select(" SELECT * FROM `alumniexprience` where id='$id'");
+        $data4= DB::select(" SELECT * FROM `alumnilanguage` where id='$id'");
+        $data5= DB::select(" SELECT * FROM `alumniskill` where id='$id'");
 
 
-        return view('showalumniprofile')->with(['data' => $data,'data1' => $data1]);
 
+        return view('showalumniprofile')->with(['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data4' => $data4,'data5' => $data5]);
+    }
+    public function send_massage(Request $req)
+    {
+
+        event(new Message($req->tname, $req->tid, $req->sname, $req->sid, $req->massege));
+        return ['success' => true];
+    }
+    public function chat()
+    {
+        $aid = Session::get('$aid');
+        $data = DB::select("SELECT * FROM `massage` WHERE sid='$aid'");
+
+
+        return view('chat')->with(['data' => $data]);
+    }
+    public function indivisual_chat($id){
+        $aid = Session::get('$aid');
+
+        $data = DB::select("SELECT * FROM `massage` WHERE (sid='$aid' or sid='$id'  and tid='$id' or tid='$aid')");
+        $data1 =DB::select(" SELECT * FROM `alumni` where id='$id'");
+
+        return view('indivisual_chat')->with(['data' => $data,'data1' => $data1]);
     }
 }

@@ -243,6 +243,11 @@ Route::get('mynetwork', [secend::class, 'mynetwork']);
 Route::get('networkremove/{id}', [secend::class, 'networkremove']);
 
 Route::get('showalumniprofile/{id}', [secend::class, 'showalumniprofile']);
+Route::get('chat', [secend::class, 'chat']);
+Route::post('send_massage', [secend::class, 'send_massage']);
+
+Route::get('indivisual_chat/{id}', [secend::class, 'indivisual_chat']);
+
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
@@ -257,3 +262,13 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
