@@ -13,8 +13,13 @@
 
     <title>Add Project</title>
   </head>
+ <style>
+      body {
+        background: url(images/cover_1.jpg) center / cover;
+    }
+ </style>
   <body>
-    <div class="container mt-5">
+    <div class="container mt-5" >
 
         <div class="row d-flex justify-content-center">
 
@@ -22,7 +27,7 @@
 
 
 
-                    <div class="text-center mt-3">
+                    <div class="text-center mt-3" style="background:white;">
 
 
 
@@ -62,12 +67,13 @@
 
 
 
-                            </div>
+                            </div><br>
                             <div class="buttons">
 
                                 <button type="submit" name="submit" class="btn btn-outline-primary px-4">ADD</button>
 
                             </div>
+                            <br>
                         </form>
 
 

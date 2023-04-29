@@ -31,7 +31,7 @@
         margin: 0;
         box-sizing: border-box;
         font-family: 'Montserrat', sans-serif;
-        background-color: white;
+        background-color: rgb(242, 244, 244);
     }
 
     html {
@@ -393,7 +393,7 @@
         padding: 1rem;
         text-align: center;
         margin: 0.3rem;
-        width: 60px;
+        width: 55px;
         border: 3px solid transparent;
         display: inline-block;
         background-color: #95bd97;
@@ -536,7 +536,7 @@
         </div>
     </center>
     <!-- Seats Diagram -->
-    <div class="mb-3">
+    <div class="mb-3" style="margin-left:7%;">
         <table id="seatsDiagram" style="display: block;
   margin-left: auto;
   margin-right: auto;">
@@ -567,9 +567,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background:green;color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background:red;color:white;'>$i</td>";
                     }
 
 
@@ -596,9 +596,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='background-color:green; color:blue;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background:red;color:white;'>$i</td>";
                     }
 
 
@@ -638,9 +638,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -668,9 +668,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -713,9 +713,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -744,9 +744,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -789,9 +789,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -820,9 +820,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -865,9 +865,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -895,9 +895,9 @@
                     $class = in_array($i, $arr) ? 'booked' : 'free';
                     if ($class == 'free') {
 
-                        echo" <td style='color:green;'>$i</td>";
+                        echo" <td style='background-color:green; color:white;'>$i</td>";
                     } else {
-                        echo" <td style='color:red;'>$i</td>";
+                        echo" <td style='background-color:red; color:white;'>$i</td>";
                     }
 
 
@@ -919,13 +919,12 @@
 
 
     <div class="modal-content"
-        style=" width: 50%; background-color: #ECF0F1 ;  display: block;
+        style=" width: 50%; background: #c2d8de ;  display: block;
   margin-left: auto;
   margin-right: auto;
   ">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Make Bookings</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form id="from" action="" method="POST">
@@ -987,7 +986,7 @@
                     <label for="seatInput" class="col-form-label">Booking Date</label>
                     <input type="date" name="date">
                 </div>
-                <center><button type="submit" class="btn btn-success" name="submit">Submit</button></center>
+                <center><button type="submit" class="btn btn-success" name="submit" style="background: rgb(41, 155, 41);">Submit</button></center>
 
             </form>
         </div>

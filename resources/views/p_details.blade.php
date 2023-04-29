@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <title>Project Details</title>
 </head>
-<body>
+<body style="background:white;">
 
 
 
@@ -21,9 +21,9 @@
     @foreach ($data as $da)
 <center>
     <br><br>
-    <section class=" container sproject mt-5 pt-5" >
+    <section class=" container sproject mt-5 pt-5"  >
         <div class="row mt-5">
-         <div class="col-lg-5 col-md-12 col-12">
+         <div class="col-lg-5 col-md-12 col-12" style="background:white;">
          <video width="900" height="400" controls>
        <source src=" {{ asset('images/' . $da->video) }}" type="video/mp4">
 
@@ -31,7 +31,7 @@
 
 
     </div>
-    <div class="col-lg-5 col-md-12 col-12">
+    <div class="col-lg-5 col-md-12 col-12" style="background:white;">
            <h1><b> {{$da->project_name}}</b> </h1>
             <div class = "item-detail">
 
@@ -55,7 +55,7 @@
 
                 @endforeach
 
-             
+
              </div>
              <p> {{$da->cname}} </p>
 
@@ -105,7 +105,7 @@
 
 
             <button onclick="location.href='/p_rating/{{$da->project_id}}'" class = "button" style="font-size:24px"><i class="fa fa-pencil"></i>Write Review</button>
-
+<br><br>
             </div>
 
 
@@ -121,7 +121,7 @@
 
 
 
-     <section id="testimonials">
+     <section id="testimonials"style="background:#b8ddc7;">
        <div class="testimonials-heading">
         <div class="container2">
          <span><h1>Reviews & Ratings For This Project</h1></span>
@@ -150,7 +150,7 @@
               @endfor
             </div>
 
-            
+
            </div>
          <div class="comment">
            <p>{{$da3->comment}}</p>
@@ -176,6 +176,8 @@
      <br>
      <br>
      <br>
+     <br><br>
+     <br><br>
      <br>
 
       <script>
@@ -432,6 +434,6 @@ gridViewBtn.addEventListener('click', () => {
 <script src="./assets/js/material-dashboard.min.js?v=3.0.4"></script>
   </body>
 
-</html> 
+</html>
 
 

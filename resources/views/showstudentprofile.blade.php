@@ -1,4 +1,5 @@
-
+@extends('layout')
+@section('content')
     <!doctype html>
     <html lang="en">
 
@@ -14,7 +15,10 @@
         <title>Student Profile</title>
     </head>
 
-    <body>
+    <body style="background: #67B26F;
+    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F);
+    background: linear-gradient(to right, #4ca2cd, #67B26F);">
+    <br>
         <div class="container" style="text-align:left">
             <div class="main-body">
 
@@ -125,7 +129,7 @@
                                 </div>
                             </div>
                 @endforeach
-                <h1 style="text-align: center"> Education </h1>
+
                 <div>
                     @foreach ($data21 as $da21)
                         <div class="card mb-3">
@@ -181,9 +185,12 @@
 
                             <p>----------------------------------------------------------------------------
                             </p>
+                        </div>
                     @endforeach
+                     <div style="background:white;">
 
-
+                    <br>
+                    <h1 style="text-align: center"> Education </h1>
                     <br>
 
 

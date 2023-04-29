@@ -50,19 +50,19 @@
 
 <body>
 
-    <div class = "main-wrapper">
-        <div class = "container">
+    <div class = "main-wrapper" style="background:#b8ddc7;">
+        <div class = "container" >
             <div class = "main-title">
-                <h1>Project List</h1>
-            </div>
+                 <h1></h1>
+
             <div class = "display-style-btns">
+                <h1 style = "margin-right:20%;">Project List</h1>
               <div class="search-bar">
              <input type="text" placeholder="Search projects...">
               <button type="submit"><i class="fa fa-search"></i></button>
              </div>
-               
-               
             </div>
+        </div>
             <section>
             @foreach ($data as $da1)
                         <div class='item-list details-active'>
@@ -83,8 +83,8 @@
                                     </div>
                                 </div>
                                 <div class='item-detail'>
-                                
-                                   
+
+
                                     <div  class='item-name'>
                                     <h1 >{{ $da1->project_name }} </h1>
                                     <p>Team Name : {{ $da1->tn }} </p>
@@ -107,7 +107,7 @@
 
 
     <script src = "now/script.js"></script>
-    
+
 </body>
 
 
@@ -356,7 +356,7 @@ video:focus{
 .search-bar button:hover {
   background-color: #ddd;
 }
-  </style> 
+  </style>
 
   <script>
   function searchProjects() {
@@ -377,44 +377,44 @@ video:focus{
   }
   // Add an event listener to the search button
   document.querySelector(".search-bar button").addEventListener("click", searchProjects);
-</script>     
-
-  
-
-      
-    
-
-  
-
-        
-
-      
-
-   
-  
-                  
-
-              
-                  
-                
-                  
-             
-    
-
-
-    
-      
-        
-        
+</script>
 
 
 
 
 
-      
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

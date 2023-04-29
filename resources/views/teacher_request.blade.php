@@ -186,7 +186,9 @@
 
             body {
                 min-height: 100vh;
-                background: url(images/cover_1.jpg) center / cover;
+                background: #67B26F;
+    background: -webkit-linear-gradient(to right, #a6d0e4, #7cbb82);
+    background: linear-gradient(to right, #a6d0e4, #7cbb82);
 
                 display: flex;
                 justify-content: center;

@@ -35,7 +35,7 @@ body {
 }
 
 main.table {
-    width: 68vw;
+    width: 75vw;
     /*height: 90vh;*/
     background-color: #fff5;
 
@@ -351,7 +351,7 @@ border-bottom-right-radius: 8px;
                     <option value=''>Select</option>
 
 
-                    
+
                 </select>
                 <div class="error"></div>
             </div>
@@ -437,7 +437,7 @@ border-bottom-right-radius: 8px;
     <br>
     <br>
     </section>
-   
+
 
 
 </body>

@@ -107,7 +107,7 @@
             <!-- Widget Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-md-6 col-xl-6">
+                    <div class="col-sm-12 col-md-6 col-xl-6" style="margin-left:20%; ">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Alumni</h6>
@@ -117,11 +117,11 @@
 
                             <form action="" method="post">
                                 @csrf
-                                <label for="fname">Name:</label>
+                                <label for="fname">Name:</label><br>
                                 <input type="text" id="fname" name="name" required><br><br>
-                                <label for="lname">ID:</label>
+                                <label for="lname">ID:</label><br>
                                 <input type="text" id="lname" name="id" required><br><br>
-                                <label for="lname">Department:</label>
+                                <label for="lname">Department:</label><br>
                                 <select name="department" id="department">
                                 <option value="" disabled selected>Choose option</option>
                                     <option value="CSE">CSE</option>
@@ -129,27 +129,27 @@
                                     <option value="BBA">BBA</option>
 
 
-                                </select>
-                                <label for="lname">Email:</label>
+                                </select><br><br>
+                                <label for="lname">Email:</label><br>
                                 <input type="text" id="lname" name="email" required><br><br>
-                                <label for="lname">Number:</label>
+                                <label for="lname">Number:</label><br>
 
                                 <input type="text" id="lname" name="number" required><br><br>
-                                <label for="gender">Gender:</label>
+                                <label for="gender">Gender:</label><br>
 
                                 <select name="gender" id="gender">
                                 <option value="" disabled selected>Choose option</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
 
-                                </select>
-                                <label for="lname">Password:</label>
+                                </select><br><br>
+                                <label for="lname">Password:</label><br>
                                 <input type="text" id="lname" name="password" required><br><br>
-                                <label for="birthdaytime">Birthday:</label>
+                                <label for="birthdaytime">Birthday:</label><br>
                                 <input type="date" id="birthdaytime" name="birthdaytime" required><br><br>
-                                <button>
+                                <center><button>
                                     Submit
-                                </button>
+                                </button></center>
                             </form>
 
                         </div>

@@ -14,6 +14,11 @@
 
     <title>Add Education</title>
   </head>
+  <style>
+    body {
+        background: url(images/cover_1.jpg) center / cover;
+    }
+  </style>
   <body>
     <div class="container mt-5">
 
@@ -72,11 +77,13 @@
 
 
                             </div>
+                            <br>
                             <div class="buttons">
 
                                 <button type="submit" name="submit" class="btn btn-outline-primary px-4">ADD</button>
 
                             </div>
+                            <br>
                         </form>
 
 
