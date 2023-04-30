@@ -93,62 +93,58 @@
 
 
 <!--search-container -->
-      <div class="search-container">
-        <div class="input">
-<i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search or start new chat   "></div>
-     <i class="fa-sharp fa-solid fa-bars-filter"></i>
-      </div>
+
 
 
 <!--chats -->
 <br>
 <br>
 
+<div class="chat-list">
+    @foreach ( $data1 as $da1 )
 
 
-      <div class="chat-list">
-
-        <div class="chat-box">
-
-             <label  style="position: absolute;height: 30px;
-width: 30px;
-padding: 6px 6px;
-border-radius: 50%;
-cursor: pointer;
-color:#FFF;
-background-color: #fff;
-transform: translateX(-90%);
-margin-top: -3%;
-margin-left: 2%;
-
-background-color: rgb(173, 172, 172 , 0.801);
-box-shadow: 2px 4px 4px rgb(0,0,0,0.644);"><img src="images/licon.jpg"></label>
-
-@foreach ($data1 as $da1 )
-          <div class="chat-details">
-
-            <div class="text-head">
-              <h4>{{$da1->aname}}</h4>
-
-            </div>
-            <div class="text-message">
-              <p> comment on your post</p>
-            </div>
+     <div class="chat-box">
+        <div class="img-box">
+            <img class="img-cover" src="images/{{$da1->userImage}}" alt="">
           </div>
-            <div class="nav-icons1">
+          <label  style="position: absolute;height: 30px;
+          width: 30px;
+          padding: 6px 6px;
+          border-radius: 50%;
+          cursor: pointer;
+          color:#FFF;
+          background-color: #fff;
+          transform: translateX(-90%);
+          margin-top: -3%;
+          margin-left: 2%;
 
-          <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+          background-color: rgb(173, 172, 172 , 0.801);
+          box-shadow: 2px 4px 4px rgb(0,0,0,0.644);"><img src="images/comment.png"></label>
+       <div class="chat-details">
+         <div class="text-head">
+            <h4>{{$da1->aname}}</h4>
 
-        </div>
-        <br>
-        @endforeach
+         </div>
+         <div class="text-head">
+            <p> comment on your post</p>
+           </div>
 
-        </div>
-      </div>
+       </div>
+     </div>
+     @endforeach
+   </div>
+
+ </div>
 
 
-    </div>
+
+
+
+
+
+
+
 
 
 
