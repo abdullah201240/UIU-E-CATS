@@ -248,6 +248,8 @@ Route::post('send_massage', [secend::class, 'send_massage']);
 
 Route::get('indivisual_chat/{id}', [secend::class, 'indivisual_chat']);
 
+Route::get('alumninotificatin', [secend::class, 'alumninotificatin']);
+
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

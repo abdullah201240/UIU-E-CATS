@@ -21,11 +21,11 @@
     </div>
     <div class="navbar-center">
         <ul>
-            <li><a href="newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
-            <li><a href="#"><img src="images/network.png"> <span>My Network</span></a></li>
-            <li><a href="#"><img src="images/jobs.png"> <span>Jobs</span></a></li>
-            <li><a href="#"><img src="images/message.png"> <span>Messaging</span></a></li>
-            <li><a href="#"><img src="images/notification.png"> <span>Notifications</span></a></li>
+            <li><a href="/newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
+            <li><a href="/mynetwork"><img src="images/network.png"> <span>My Network</span></a></li>
+            <li><a href="/alumnifind"><img src="images/jobs.png"> <span>Find People</span></a></li>
+
+            <li><a href="/alumninotificatin"><img src="images/notification.png"> <span>Notifications</span></a></li>
         </ul>
     </div>
     @foreach ($data1 as $da1)

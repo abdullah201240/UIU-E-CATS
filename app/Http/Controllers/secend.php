@@ -452,4 +452,11 @@ class secend extends Controller
 
         return view('indivisual_chat')->with(['data' => $data,'data1' => $data1]);
     }
+    public function alumninotificatin(){
+        $aid = Session::get('$aid');
+        $data1 = DB::select("SELECT * FROM `postcomment` WHERE aid='$aid'");
+        $data =DB::select(" SELECT * FROM `alumni` where id='$aid'");
+
+        return view('alumninotificatin')->with(['data' => $data,'data1' => $data1]);
+    }
 }

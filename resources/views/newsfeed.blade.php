@@ -19,7 +19,7 @@
 
 
         <div class="navbar-left">
-            <a href="newsfeed.php" class="logo"><img src="images/logo.png"></a>
+            <a href="newsfeed" class="logo"><img src="images/logo.png"></a>
 
             <div class="search-box">
                 <img src="images/search.png">
@@ -32,9 +32,10 @@
         <div class="navbar-center">
             <ul>
                 <li><a href="/newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
-                <li><a href="#"><img src="images/network.png"> <span>My Network</span></a></li>
-
-                <li><a href="#"><img src="images/message.png"> <span>Messaging</span></a></li>
+                <li><a href="mynetwork"><img src="images/network.png"> <span>My Network</span></a></li>
+                <li><a href="/alumnifind"><img src="images/jobs.png"> <span>Find People</span></a></li>
+                <li><a href="/alumninotificatin"><img src="images/notification.png"> <span>Notifications</span></a></li>
+                {{-- <li><a href="#"><img src="images/message.png"> <span>Messaging</span></a></li> --}}
 
             </ul>
         </div>

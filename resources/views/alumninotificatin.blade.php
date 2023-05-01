@@ -1,12 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+ <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
   <title>
-   My Network
+    Notifications
   </title>
 </head>
 <body>
@@ -27,16 +29,16 @@
 
     <div class="navbar-center">
       <ul>
-        <li><a href="/newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
-        <li><a href="/mynetwork"><img src="images/network.png"> <span>My Network</span></a></li>
-        <li><a href="/alumnifind"><img src="images/jobs.png"> <span>Find People</span></a></li>
+        <li><a href="newsfeed" class="active-link"><img src="images/home.png"> <span>Home</span></a></li>
+        <li><a href="#"><img src="images/network.png"> <span>My Network</span></a></li>
+        <li><a href="#"><img src="images/jobs.png"> <span>Jobs</span></a></li>
 
         <li><a href="/alumninotificatin"><img src="images/notification.png"> <span>Notifications</span></a></li>
       </ul>
     </div>
-@foreach ($data as $da)
 
 
+@foreach ($data as $da )
 
 
     <div class="navbar-right">
@@ -70,64 +72,86 @@
   <!--navbar end-->
 
 
-<div class="container1">
 
-   <h1 class="heading">Alumni List &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <div id="load-more"> load more </div></h1>
+  <div class="main-container">
+    <div class="left-container">
 
+<!--header -->
+      <div class="header">
 
-   <div class="box-container">
-@foreach ($data1 as $da1 )
-
-
-      <div class="box">
-         <div class="image">
-            <img src="images/{{ $da1->cimage}}" alt="">
-         </div>
-         <div class="content">
-            <h3>{{ $da1->cname}}</h3>
-            <p>Email: {{ $da1->cemail}}</p>
-            <a href="networkremove/{{ $da1->id}}" class="btn">Remove</a>
-            <div class="icons">
-
-            </div>
-         </div>
+      <div>
+        <h1 style="margin-left: 150%;">Notifications</h1>
       </div>
-      @endforeach
+        <div class="nav-icons">
+          <li><i class="fa-solid fa-users"></i></li>
+
+          <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+        </div>
+      </div>
 
 
 
 
+<!--search-container -->
 
 
 
+<!--chats -->
+<br>
+<br>
+
+<div class="chat-list">
+    @foreach ( $data1 as $da1 )
 
 
+     <div class="chat-box">
+        <div class="img-box">
+            <img class="img-cover" src="images/{{$da1->userImage}}" alt="">
+          </div>
+          <label  style="position: absolute;height: 30px;
+          width: 30px;
+          padding: 6px 6px;
+          border-radius: 50%;
+          cursor: pointer;
+          color:#FFF;
+          background-color: #fff;
+          transform: translateX(-90%);
+          margin-top: -3%;
+          margin-left: 2%;
+
+          background-color: rgb(173, 172, 172 , 0.801);
+          box-shadow: 2px 4px 4px rgb(0,0,0,0.644);"><img src="images/comment.png"></label>
+       <div class="chat-details">
+         <div class="text-head">
+            <h4>{{$da1->aname}}</h4>
+
+         </div>
+         <div class="text-head">
+            <p> comment on your post</p>
+           </div>
+
+       </div>
+     </div>
+     @endforeach
    </div>
 
+ </div>
 
 
-</div>
 
-<script>
 
-let loadMoreBtn = document.querySelector('#load-more');
-let currentItem = 3;
 
-loadMoreBtn.onclick = () =>{
-   let boxes = [...document.querySelectorAll('.container1 .box-container .box')];
-   for (var i = currentItem; i < currentItem + 3; i++){
-      boxes[i].style.display = 'inline-block';
-   }
-   currentItem += 3;
 
-   if(currentItem >= boxes.length){
-      loadMoreBtn.style.display = 'none';
-   }
-}
 
-</script>
+
+
+
+
+
 <style>
-    *{
+
+
+*{
 	margin: 0;
 	padding: 0;
 	font-family: 'poppins', sans-serif;
@@ -958,151 +982,453 @@ display: block;
 
 }
 </style>
+
 <style>
-  .container1{
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding:25px 20px;
+
+.main-container {
+
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 1000px;
+  max-width: 100%;
+  height: calc(100vh - 80px);
+  background: #fff;
+  display: flex;
+  box-shadow: 0px 1px 1px  0 rgba(0,0,0,0.5), 0px 2px 5px 0 rgba(0,0,0,0.6);
 }
 
-.container1 .heading{
-  font-size: 40px;
-  margin-bottom: 20px;
-  color:#334;
+.main-container .left-container {
+  position:relative;
+  width: 30%;
+  height:100%;
+  flex: 30%;
+  background: #fff;
 }
 
-.container1 .box-container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap:20px;
-}
-
-.container1 .box-container .box{
-  background-color: #fff;
-  padding:20px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0,0,0,.2);
-  display: none;
-  height: 400px;
-  width: 300px;
-}
-
-.container1 .box-container .box:nth-child(1),
-.container1 .box-container .box:nth-child(2),
-.container1 .box-container .box:nth-child(3){
-  display: inline-block;
-}
-
-.container1 .box-container .box .image{
-  margin-bottom: 20px;
-  overflow: hidden;
-  height: 200px;
-
-  border-radius: 5px;
-}
-
-.container1 .box-container .box .image img{
+.main-container .right-container {
+  position: relative;
+  width: 70%;
   height: 100%;
+  flex: 70%;
+  background: #e5ddd5;
+}
+
+.main-container .right-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-
-  object-fit: cover;
+  height: 100%;
+  background: url(https://camo.githubusercontent.com/854a93c27d64274c4f8f5a0b6ec36ee1d053cfcd934eac6c63bed9eaef9764bd/68747470733a2f2f7765622e77686174736170702e636f6d2f696d672f62672d636861742d74696c652d6461726b5f61346265353132653731393562366237333364393131306234303866303735642e706e67);
+  opacity: 0.5;
 }
 
-.container1 .box-container .box:hover .image img{
-  transform: scale(1.1);
-}
-
-.container1 .box-container .box .content h3{
-  font-size: 20px;
-  color:#334;
-}
-
-.container1 .box-container .box .content p{
-  font-size: 15px;
-  color:#777;
-  line-height: 2;
-  padding:15px 0;
-}
-
-.container1 .box-container .box .content .btn{
-  display: inline-block;
-  padding:10px 30px;
-  border:1px solid #9c9cdf;
-  background-color: #38406e;
-
-  color:#fff;
-  font-size: 16px;
-}
-
-.container1 .box-container .box .content .btn:hover{
-  background-color: #9c9cdf;
-  border-color: #9c9cdf;
-  color:#fff;
-}
-
-.container1 .box-container .box .content .icons{
+.header {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top:1px solid #334;
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  padding: 0 15px;
 }
 
-.container1 .box-container .box .content .icons span{
-  font-size: 14px;
-  color:#777;
+.user-img {
+  position:relative;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
-.container1 .box-container .box .content .icons span i{
-  color:crimson;
-  padding-right: 5px;
-}
-
-#load-more{
-  margin-top: 20px;
-  display: inline-block;
-  padding:13px 30px;
-  border:1px solid #334;
-
-  font-size: 16px;
-  background-color: #38406e;
-  border-color: #38406e;
-  color:#fff;
+.dp {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   cursor: pointer;
 }
 
-#load-more:hover{
-  background-color: #fff;
-  border-color: #38406e;
-  color: black;
+.nav-icons {
+  display:flex;
+  justify-content: flex-end;
+  padding-left: 110px;
+  margin-left: 60%;
 }
 
-@media (max-width:450px){
-
-  .container1 .heading{
-    font-size: 25px;
-  }
-
-  .container1 .box-container{
-    grid-template-columns: 1fr;
-  }
-
-  .container1 .box-container .box .image{
-    height: 200px;
-  }
-
-  .container1 .box-container .box .content p{
-    font-size: 12px;
-  }
-
-  .container1 .box-container .box .content .icons span{
-    font-size: 12px;
-  }
+.nav-icons li {
+  backgroud-color:pink;
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  color: #51585c;
+  margin-left: 22px;
+  font-size: 18px;
+}
+.nav-icons1 {
+  display:flex;
+  justify-content: flex-end;
+  padding-left: 110px;
 
 }
+
+.nav-icons1 li {
+  backgroud-color:pink;
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  color: #51585c;
+  margin-left: 22px;
+  font-size: 18px;
+}
+.notif-box {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  background: #76daff;
+  align-items: center;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+.notif-box i {
+  position:relative;
+  left: 13px;
+  background:#fff;
+  padding:10px;
+  width: 42px;
+  height: auto;
+  font-size: 20px;
+  border-radius: 55%;
+  cursor: pointer;
+  color:#76daff;
+}
+
+.notif-box .fa-xmark {
+  position: absolute;
+  left: 260px;
+  text-align:center;
+  background:#76daff;
+  color: #fff;
+}
+
+.notif-text {
+  margin: 25px;
+}
+
+.notif-text a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.search-container {
+  position:relative;
+  width: 100%;
+  height: 50px;
+  background: #f6f6f6;
+  display: flex;
+/*   justify-content: center; */
+  align-items: center;
+}
+
+.search-container .input input {
+  width: 400%;
+  outline: none;
+  border: none;
+  background: #fff;
+  padding: 5px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 12px;
+  padding-left: 60px;
+  margin: 10px
+}
+
+.search-container .input i {
+  position: absolute;
+  left: 26px;
+  top: 14px;
+  color:#bbb;
+  font-size: 0.8em;
+}
+
+.chat-list {
+  position: relative;
+  height:calc(100% - 170px);
+  overflow-y: auto;
+}
+
+.chat-list .chat-box {
+  position: relative;
+  width: 100%;
+  display:flex;
+/*   justify-content: center; */
+  align-items:center;
+  cursor: pointer;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.chat-list .chat-box .img-box {
+  position:relative;
+  width: 55px;
+  height:45px;
+  overflow:hidden;
+  border-radius: 50%;
+ border: #385898 4px solid;
+}
+
+.chat-list .chat-box .chat-details {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.chat-list .chat-box .chat-details .text-head {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:2px;
+}
+
+.chat-list .chat-box .chat-details .text-head h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #000;
+}
+
+.chat-list .chat-box .chat-details .text-head .time {
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+.chat-list .chat-box .chat-details .text-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-list .chat-box .chat-details .text-message p {
+  color: #aaa;
+  font-size: 0.9em;
+  overlay: hidden;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.chat-list .chat-box .chat-details .text-message b {
+  background: #06e744;
+  color: #fff;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+/*   text-align: center; */
+  font-size: 0.8em;
+  font-weight: 400;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.chat-list .active {
+  background: #ebebeb;
+}
+
+.chat-list .chat-box:hover {
+  background: #f5f5f5;
+}
+
+.chat-list .chat-box .chat-details .text-head .unread {
+  color: #06e744;
+}
+
+
+/* right-container */
+
+
+.right-container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-container .header .img-text .user-img .dp {
+  position:relative;
+  top: -2px;
+  left: 0px;
+  width: 40px;
+  height:auto;
+  overflow:hidden;
+  object-fit: cover;
+}
+
+.right-container .header .img-text {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.right-container .header .img-text h4 {
+  font-weight: 500;
+  line-height: 1.2em;
+  margin-left: 15px;
+}
+
+.right-container .header .img-text h4 span {
+  font-size: 0.8em;
+  color: #555;
+}
+
+.right-container .header .nav-icons {
+  position: relative;
+  margin-right:0px;
+/*   padding: 5px; */
+}
+
+.right-container .header .nav-icons i {
+  padding: 10px;
+}
+
+.chat-container {
+  position:relative;
+  width: 100%;
+  height: calc(100% - 120px);  /*60+60*/
+  padding: 50px;
+  overflow-y: auto;
+}
+
+.message-box {
+  position:relative;
+  display: flex;
+  width:100%;
+  margin: 5px 0;
+}
+
+.message-box p {
+  position:relative;
+  right: 0;
+  text-align: right;
+  max-width: 65%;
+  padding: 12px;
+  background: #dcf8c6;
+  border-radius: 10px;
+  font-size: 0.9em;
+}
+
+.message-box.my-message p::before {
+  content : '';
+  position: absolute;
+  top: 0;
+  right: -12px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #dcf8c6 0%, #dcf8c6 50%, transparent 50%, transparent);
+}
+
+.message-box p span {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.8em;
+  opacity: 0.5;
+}
+
+.my-message {
+  justify-content: flex-end;
+}
+
+.friend-message p {
+  background: #fff;
+}
+
+.friend-message {
+  justify-content: flex-start;
+
+}
+
+.chat-container .my-message i {
+  color: yellow;
+}
+
+.message-box.friend-message::before {
+  content : '';
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(225deg, #fff 0%, #fff 50%, transparent 50%, transparent);
+}
+
+.chatbox-input {
+  position:relative;
+  width: 100%;
+  height: 60px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbox-input i {
+  cursor: pointer;
+  font-size: 1.8em;
+  color: #515855;
+}
+
+.chatbox-input i:nth-child(1) {
+   margin: 15px;
+}
+
+.chatbox-input i:last-child {
+  margin-right: 25px;
+}
+
+ .chatbox-input input {
+    position: relative;
+    width: 90%;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border-radius:10px;
+    font-size: 1em;
+    border:none;
+    outline:none;
+ }
+
 </style>
+
+<script>
+
+</script>
+
+<!--
+ <div class="profile-footer">
+   <div class="sidebar-useful-links">
+
+      <div class="copyright-msg">
+        <img src="images/logo.png">
+
+      </div>
+      <p>Created at 2023 by team</p>
+    </div>
+ </div>
+ -->
+
+
+
+
+
+</div>
+
 
 
 
